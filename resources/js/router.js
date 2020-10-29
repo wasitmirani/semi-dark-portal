@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
-    { path: '/', component: require('./components/user/UserComponent.vue').default },
+    { path: '/', component: require('./components/dashboard/DashboardComponent.vue').default },
     { path: '/all/users', component: require('./components/user/UserComponent.vue').default },
 ]
 

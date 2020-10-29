@@ -172,18 +172,18 @@
                                          </a>
                                      </div>
                                 </li>
-                                <li class="list-inline-item">
+                                {{-- <li class="list-inline-item">
                                     <div class="searchbar">
                                         <form>
                                             <div class="input-group">
-                                              <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                                              <input type="search" class="form-control" placeholder="Search"  aria-label="Search" aria-describedby="button-addon2">
                                               <div class="input-group-append">
                                                 <button class="btn" type="submit" id="button-addon2"><img src="assets\images\svg-icon\search.svg" class="img-fluid" alt="search"></button>
                                               </div>
                                             </div>
                                         </form>
                                     </div>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                         <div class="infobar">

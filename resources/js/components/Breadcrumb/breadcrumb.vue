@@ -2,16 +2,16 @@
 <template>
 <div>
  <!-- Start Breadcrumbbar -->
-            <div class="breadcrumbbar">
+            <div class="breadcrumbbar" v-show="breadcrumbbar">
                 <div class="row align-items-center">
                     <div class="col-md-8 col-lg-8">
                         <h4 class="page-title">{{active_name}}</h4>
                         <div class="breadcrumb-list">
                             <ol class="breadcrumb">
 
-                                <li class="breadcrumb-item"><router-link :to="home_url">{{home_name}}</router-link></li>
-                                <li class="breadcrumb-item"><router-link :to="back_url">{{back_name}}</router-link></li>
-                                <li class="breadcrumb-item active" aria-current="page"><router-link :to="active_url">{{active_name}}</router-link></li>
+                                <li class="breadcrumb-item" v-if="home_name!=null ||home_url !=null "><router-link :to="home_url">{{home_name}}</router-link></li>
+                                <li class="breadcrumb-item" v-if="back_name!=null  ||back_url !=null"><router-link :to="back_url">{{back_name}}</router-link></li>
+                                <li class="breadcrumb-item active" aria-current="page"  v-if="active_url!=null || active_name!=null" ><router-link :to="active_url">{{active_name}}</router-link></li>
                             </ol>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
 
 <script>
 export default {
-      props: ['home_name','home_url','back_name','back_url','active_name','active_url']
+      props: ['home_name','home_url','back_name','back_url','active_name','active_url','breadcrumbbar']
 }
 </script>
 
