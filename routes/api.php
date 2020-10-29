@@ -20,8 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // 'prefix' => 'admin',
-Route::group(['middleware' => 'api'], function()
-{
-    //All the routes that belongs to the group goes here
-    Route::get('/users',[UserController::class,'index']);
-});
+// Route::group(['middleware' => 'api'], function()
+// {
+//     //All the routes that belongs to the group goes here
+//     Route::get('/users',[UserController::class,'index']);
+// });
+Route::get('/get/all/users',[UserController::class,'index']);

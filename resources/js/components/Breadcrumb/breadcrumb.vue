@@ -1,6 +1,7 @@
 
 <template>
-         <!-- Start Breadcrumbbar -->
+<div>
+ <!-- Start Breadcrumbbar -->
             <div class="breadcrumbbar">
                 <div class="row align-items-center">
                     <div class="col-md-8 col-lg-8">
@@ -22,6 +23,8 @@
                 </div>
             </div>
             <!-- End Breadcrumbbar -->
+</div>
+
 </template>
 
 <script>

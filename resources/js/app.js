@@ -8,11 +8,18 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import router from "./router";
+import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 
 
+
+
+Vue.use(BootstrapVue)
+Vue.use(BootstrapVueIcons)
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component("pagination", require("laravel-vue-pagination"));
 
-
+Vue.prototype.$base_url = window.location.origin;
+Vue.prototype.$hostapi_url = window.location.origin + "/api";
 const app = new Vue({
     el: '#app',
     router,
