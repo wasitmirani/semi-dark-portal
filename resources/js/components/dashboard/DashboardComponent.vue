@@ -4,7 +4,9 @@
     home_name="Dashboard" 
     home_url="/" 
     active_name="Dashboard"
-    active_url="/"/>
+    active_url="/"
+    
+    />
 </template>
 
 <script>
@@ -15,6 +17,8 @@ import Breadcrumb from "../Breadcrumb/breadcrumb";
         },
         mounted() {
             console.log('Component mounted.')
+                 this.$Progress.finish()
         }
+      
     }
 </script>

@@ -1,5 +1,7 @@
 <template>
+
     <div>
+    {{ this.$Progress.start()}}
         <breadcrumb
             home_name="Dashboard"
             home_url="/"
@@ -7,6 +9,7 @@
             back_url="/all/users"
             active_name="Users"
             active_url="/all/users"
+            :breadcrumbbar="true"  
         ></breadcrumb>
         <div class="contentbar">
             <!-- Start row -->
@@ -16,8 +19,10 @@
                     <div class="card m-b-30">
                         <div class="card-header">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-10">
                                     <h5 class="card-title">
+                                    <div class="col-md-4">
+
                                      <div class="searchbar">
                                         <form>
                                             <div class="input-group">
@@ -26,12 +31,13 @@
                                             </div>
                                         </form>
                                     </div>
+                                    </div>
                                     </h5>
                                 </div>
-                                <div class="col-md-2  float-right">
+                                <div class="col-md-2 ">
                                     <button
                                         type="button"
-                                        class="btn btn-primary"
+                                        class="btn btn-primary  float-right"
                                     >
                                         New User
                                     </button>
@@ -82,6 +88,9 @@ export default {
     },
     mounted() {
         this.get_users();
+         var self = this;
+         setTimeout(function(){ self.$Progress.finish() }, 1000);
+        // 
     }
 };
 </script>

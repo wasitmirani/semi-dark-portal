@@ -13,11 +13,10 @@
     <link rel="shortcut icon" href="assets\images\favicon.ico">
     <!-- Start css -->
     <!-- Switchery css -->
-    <link href="assets\plugins\switchery\switchery.min.css" rel="stylesheet">
+ 
     <!-- Apex css -->
-    <link href="assets\plugins\apexcharts\apexcharts.css" rel="stylesheet">
-    <!-- Slick css -->
-     <link href="assets\plugins\rwd-table-patterns\rwd-table.min.css" rel="stylesheet" type="text/css">
+  
+
     <link href="assets\plugins\slick\slick.css" rel="stylesheet">
     <link href="assets\plugins\slick\slick-theme.css" rel="stylesheet">
     <link href="assets\css\bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -100,9 +99,10 @@
                                 <img src="assets\images\svg-icon\basic.svg" class="img-fluid" alt="basic"><span>User Management</span><i class="feather icon-chevron-right pull-right"></i>
                             </a>
                             <ul class="vertical-submenu">
-                                <li><a href="basic-ui-kits-alerts.html">Users</a></li>
-                                <li><a href="basic-ui-kits-badges.html">Roles</a></li>
-                                <li><a href="basic-ui-kits-buttons.html">Permission</a></li>
+                                <li><router-link to="/all/users">Users</router-link>
+                                </li>
+                                <li><router-link to="/all/roles">Roles</router-link></li>
+                                <li><router-link to="/all/permission">Permission</router-link></li>
 
                             </ul>
                         </li>
@@ -302,20 +302,16 @@
     <script src="assets\js\detect.js"></script>
     <script src="assets\js\jquery.slimscroll.js"></script>
     <script src="assets\js\vertical-menu.js"></script>
-    <!-- Switchery js -->
-    <script src="assets\plugins\switchery\switchery.min.js"></script>
-    <!-- Apex js -->
-    <script src="assets\plugins\apexcharts\apexcharts.min.js"></script>
-    <script src="assets\plugins\apexcharts\irregular-data-series.js"></script>
+
     <!-- Slick js -->
     <script src="assets\plugins\slick\slick.min.js"></script>
     <!-- Custom Dashboard js -->
-    <script src="assets\js\custom\custom-dashboard.js"></script>
+    {{-- <script src="assets\js\custom\custom-dashboard.js"></script> --}}
     <!-- Core js -->
     <script src="assets\js\core.js"></script>
         <!-- RWD Table js -->
-    <script src="assets\plugins\rwd-table-patterns\rwd-table.min.js"></script>
-    <script src="assets\js\custom\custom-table-rwd.js"></script>
+
+
     @yield('script')
     <!-- End js -->
 </body>

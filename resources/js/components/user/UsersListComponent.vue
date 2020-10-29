@@ -3,8 +3,8 @@
                             <div class="card-body">
                                 <h6 class="card-subtitle">User, Display all User data.</h6>
 
-                                <div class="table table-responsive rwd-table" style="overflow-x: visible;">
-                                    <table id="tech-companies-1" class="table table-bordered table-striped">
+                                <div class="table-responsive" >
+                                    <table class="table">
                                         <thead>
                                             <tr>
                                                 <th>Thumbnail</th>
