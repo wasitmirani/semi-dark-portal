@@ -27,7 +27,7 @@
                                                 <td>{{ item.last_login }}</td>
                                                 <td>{{ item.created_at }}</td>
                                                 <td>{{ item.updated_at }}</td>
-                                                <td>Action</td>
+                                                <td> <h4> <a role="button" @click="edit_row(item)"><i class="mdi mdi-circle-edit-outline text-primary"></i></a></h4>  </td>
                                             </tr>
 
                                         </tbody>
@@ -43,7 +43,16 @@
 <script>
 
 export default {
-  props: ['users','get_users']
+  props: ['users','get_users','changedata'],
+  methods: {
+        edit_row(item){
+            // this.current_item=item;
+            // this.$emit("changedata","This is new Data");
+            console.log(item);
+            this.$emit("helloworld",item);
+            // return item;
+        }
+  },
 }
 </script>
 

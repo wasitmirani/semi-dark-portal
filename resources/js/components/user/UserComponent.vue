@@ -54,6 +54,7 @@
                 </div>
                 <!-- End col -->
             </div>
+
         </div>
 
     <!-- Modal -->
@@ -75,8 +76,9 @@
                 </div>
                 </div>
             </div>
+        
             </div>
-
+ 
     </div>
 </template>
 
@@ -91,10 +93,15 @@ export default {
     data() {
         return {
             users: {},
-            isloading: false
+            isloading: false,
+            edit_collection:{},
         };
     },
     methods: {
+        Update_data(event){
+        console.log(UserList);
+        },
+      
         openModal(){
             $('#UserModal').modal('show')
         },
@@ -111,9 +118,19 @@ export default {
                 });
         }
     },
+     watch: {
+            onClickChild (value) {
+                UserList.$on("helloworld");
+      console.log(UserList.methods.edit_row()) // someValue
+    },
+    },
+
+ 
     mounted() {
         this.get_users();
          var self = this;
+         console.log(UserList.edit_row)
+         console.log("user",UserList.methods.edit_row());
          setTimeout(function(){ self.$Progress.finish() }, 1000);
         // 
     }
