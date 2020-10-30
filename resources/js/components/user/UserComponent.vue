@@ -53,7 +53,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <p v-show="eidt_mode">{{ edit_collection }}</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
@@ -80,13 +80,15 @@ export default {
             users: {},
             isloading: false,
             edit_collection: {},
+            eidt_mode: false,
         };
     },
     methods: {
         Update_data(event) {
-            console.log("hello");
-            alert(JSON.stringify(event));
-            console.log("update", event);
+
+            this.eidt_mode = true;
+            this.edit_collection = event;
+            $('#UserModal').modal('show')
         },
 
         openModal() {
@@ -107,7 +109,6 @@ export default {
     },
     watch: {
         onClickChild(value) {
-
             // console.log(UserList.methods.edit_row()) // someValue
         },
     },
@@ -115,8 +116,7 @@ export default {
     mounted() {
         this.get_users();
         var self = this;
-        console.log(UserList.edit_row)
-        // console.log("user", UserList.methods.edit_row());
+
         setTimeout(function () {
             self.$Progress.finish()
         }, 1000);
