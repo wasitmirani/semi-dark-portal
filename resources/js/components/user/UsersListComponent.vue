@@ -1,7 +1,7 @@
 <template>
 <div>
                             <div class="card-body">
-                                <h6 class="card-subtitle">User, Display all User data.</h6>
+                                <h6 class="card-subtitle">All Users.</h6>
 
                                 <div class="table-responsive" >
                                     <table class="table">

@@ -38,7 +38,7 @@
                                     <button
                                         type="button"
                                         class="btn btn-primary  float-right"
-                                    >
+                                     @click="openModal" >
                                         New User
                                     </button>
                                 </div>
@@ -55,6 +55,28 @@
                 <!-- End col -->
             </div>
         </div>
+
+    <!-- Modal -->
+            <div class="modal fade" id="UserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Register User</h5>
+                    <button type="button" class="close" style="color:white;"  data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-sm btn-primary">Save</button>
+                </div>
+                </div>
+            </div>
+            </div>
+
     </div>
 </template>
 
@@ -73,6 +95,9 @@ export default {
         };
     },
     methods: {
+        openModal(){
+            $('#UserModal').modal('show')
+        },
         get_users(page = 1) {
             this.isloading = true;
             axios
