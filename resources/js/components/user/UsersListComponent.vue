@@ -1,58 +1,60 @@
 <template>
 <div>
-                            <div class="card-body">
-                                <h6 class="card-subtitle">All Users.</h6>
+    <div class="card-body">
+        <h6 class="card-subtitle">All Users.</h6>
 
-                                <div class="table-responsive" >
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Thumbnail</th>
-                                            <th data-priority="1">Status</th>
-                                                <th data-priority="1">Name</th>
-                                                <th data-priority="2">Email</th>
-                                                <th data-priority="3">Last login</th>
-                                                <th data-priority="4">Created</th>
-                                                <th data-priority="5">Updated</th>
-                                                <th data-priority="6">Action</th>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Thumbnail</th>
+                        <th data-priority="1">Status</th>
+                        <th data-priority="1">Name</th>
+                        <th data-priority="2">Email</th>
+                        <th data-priority="3">Last login</th>
+                        <th data-priority="4">Created</th>
+                        <th data-priority="5">Updated</th>
+                        <th data-priority="6">Action</th>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr v-for="item in users.data" :key="item.id">
-                                                <td>{{ item.thumbnail }} </td>
-                                                <td>{{ item.status }}</td>
-                                                <th><span class="co-name">{{ item.name }}</span></th>
-                                                <td>{{ item.email }}</td>
-                                                <td>{{ item.last_login }}</td>
-                                                <td>{{ item.created_at }}</td>
-                                                <td>{{ item.updated_at }}</td>
-                                                <td> <h4> <a role="button" @click="edit_row(item)"><i class="mdi mdi-circle-edit-outline text-primary"></i></a></h4>  </td>
-                                            </tr>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in users.data" :key="item.id">
+                        <td>{{ item.thumbnail }} </td>
+                        <td>{{ item.status }}</td>
+                        <th><span class="co-name">{{ item.name }}</span></th>
+                        <td>{{ item.email }}</td>
+                        <td>{{ item.last_login }}</td>
+                        <td>{{ item.created_at }}</td>
+                        <td>{{ item.updated_at }}</td>
+                        <td>
+                            <h4> <a role="button" @click="changedata(item)"><i class="mdi mdi-circle-edit-outline text-primary"></i></a></h4>
+                        </td>
+                    </tr>
 
-                                        </tbody>
-                                    </table>
-                                </div>
-                                       <hr>
-                                   <pagination :data="users" @pagination-change-page="get_users"></pagination>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        <pagination :data="users" @pagination-change-page="get_users"></pagination>
 
-                            </div>
+    </div>
 </div>
 </template>
 
 <script>
-
 export default {
-  props: ['users','get_users','changedata'],
-  methods: {
-        edit_row(item){
+    props: ['users', 'get_users'],
+    methods: {
+        changedata: function (item) {
             // this.current_item=item;
             // this.$emit("changedata","This is new Data");
-            console.log(item);
-            this.$emit("helloworld",item);
+            // console.log(item);
+            return this.$emit("changedata", item);
+
             // return item;
         }
-  },
+    },
 }
 </script>
 
