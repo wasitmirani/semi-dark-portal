@@ -13,9 +13,9 @@
     <link rel="shortcut icon" href="assets\images\favicon.ico">
     <!-- Start css -->
     <!-- Switchery css -->
- 
+
     <!-- Apex css -->
-  
+
 
     <link href="assets\plugins\slick\slick.css" rel="stylesheet">
     <link href="assets\plugins\slick\slick-theme.css" rel="stylesheet">
@@ -311,6 +311,13 @@
     <script src="assets\js\core.js"></script>
         <!-- RWD Table js -->
 
+<script >
+     @auth
+        window.authUser = {!! json_encode(Auth::user(), true) !!};
+    @else
+        window.authUser = [];
+    @endauth
+</script>
 
     @yield('script')
     <!-- End js -->

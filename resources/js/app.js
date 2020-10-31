@@ -33,6 +33,8 @@ Vue.filter("timeformat", function(value) {
 
 Vue.prototype.$base_url = window.location.origin;
 Vue.prototype.$hostapi_url = window.location.origin + "/api";
+Vue.prototype.$config={headers: { Authorization: `Bearer `+authUser.api_token }};
+
 const app = new Vue({
     el: '#app',
     router,

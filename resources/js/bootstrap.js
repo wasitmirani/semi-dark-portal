@@ -22,6 +22,7 @@ try {
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+// axios.defaults.headers.common = {'Authorization': `bearer ${authUser.api_token}`}
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
