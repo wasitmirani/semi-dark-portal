@@ -21,14 +21,15 @@
                 <tbody>
                     <tr v-for="item in users.data" :key="item.id">
                         <td>{{ item.thumbnail }} </td>
-                        <td>{{ item.status }}</td>
+                        <td v-if="item.status==1">  <b-badge pill variant="success">active</b-badge></td>
+                         <td v-else>  <b-badge pill variant="danger">Deactive</b-badge></td>
                         <th><span class="co-name">{{ item.name }}</span></th>
                         <td>{{ item.email }}</td>
-                        <td>{{ item.last_login }}</td>
-                        <td>{{ item.created_at }}</td>
-                        <td>{{ item.updated_at }}</td>
+                        <td>{{ item.last_login | timeformat }}</td>
+                        <td>{{ item.created_at | timeformat }}</td>
+                        <td>{{ item.updated_at | timeformat }}</td>
                         <td>
-                            <h4> <a role="button" @click="changedata(item)"><i class="mdi mdi-circle-edit-outline text-primary"></i></a></h4>
+                            <h5><a role="button" @click="changedata(item)"><i class="mdi mdi-circle-edit-outline text-primary"></i></a> | <a role="button" @click="changedata(item)"><i class="mdi mdi mdi-trash-can text-danger"></i></a> </h5>
                         </td>
                     </tr>
 
@@ -55,6 +56,7 @@ export default {
             // return item;
         }
     },
+
 }
 </script>
 

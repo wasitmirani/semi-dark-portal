@@ -101,6 +101,10 @@ export default {
                 .then(res => {
                     this.users = res.data;
                     this.isloading = false;
+                    var self = this;
+                    setTimeout(function () {
+                        self.$Progress.finish()
+                    }, 1000);
                 })
                 .catch(er => {
                     console.log(er);
@@ -108,9 +112,7 @@ export default {
         }
     },
     watch: {
-        onClickChild(value) {
-            // console.log(UserList.methods.edit_row()) // someValue
-        },
+
     },
 
     mounted() {

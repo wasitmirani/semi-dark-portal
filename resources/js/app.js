@@ -10,7 +10,7 @@ window.Vue = require('vue');
 import router from "./router";
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import VueProgressBar from "vue-progressbar";
-
+import moment from 'moment';
 
 
 Vue.use(BootstrapVue)
@@ -22,7 +22,14 @@ Vue.use(VueProgressBar, {
     failedColor: "red",
     height: "4px"
 });
-
+Vue.filter("timeformat", function(value) {
+    if (value) {
+        return moment
+            .utc(String(value))
+            .local()
+            .fromNow();
+    }
+});
 
 Vue.prototype.$base_url = window.location.origin;
 Vue.prototype.$hostapi_url = window.location.origin + "/api";
