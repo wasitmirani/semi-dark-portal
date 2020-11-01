@@ -55,6 +55,19 @@
                 </div>
                 <div class="modal-body">
                          <b-form @submit="onSubmit"  >
+                                <b-form-group id="input-group-2" label="Your Full Name:" label-for="input-2">
+                        <b-form-input
+                        id="input-2"
+                        v-model="form.name"
+                         :state="namevalidation"
+
+                        placeholder="Enter full name"
+                        ></b-form-input>
+                         <b-form-invalid-feedback :state="namevalidation">
+                                  Your Name  must be 4-45 characters long.
+                                  </b-form-invalid-feedback>
+                         </b-form-group>
+
                      <b-form-group
                             id="input-group-1"
                             label="Email address:"
@@ -67,7 +80,7 @@
                             :state="emailvalidation"
                             type="email"
                              @keydown="emailerror"
-                            required
+
                             placeholder="Enter email"
                             ></b-form-input>
                                   <b-form-invalid-feedback :state="emailvalidation">
@@ -81,18 +94,6 @@
                                   </b-form-invalid-feedback>
                         </b-form-group>
 
-                    <b-form-group id="input-group-2" label="Your Full Name:" label-for="input-2">
-                        <b-form-input
-                        id="input-2"
-                        v-model="form.name"
-                         :state="namevalidation"
-                        required
-                        placeholder="Enter full name"
-                        ></b-form-input>
-                         <b-form-invalid-feedback :state="namevalidation">
-                                  Your Name  must be 4-45 characters long.
-                                  </b-form-invalid-feedback>
-                         </b-form-group>
 
                     <b-form-group id="input-group-2" label="Password" label-for="input-2">
                         <b-form-input
@@ -138,10 +139,15 @@ export default {
     computed: {
       emailvalidation() {
           if(this.form.email=="")
-           return null;
+          {
+              if(this.errors['email'])
+                    return false;
+                else
+             return null;
+          }
            else{
-                if(this.errors['email'] && this.form.email!="")
-                return false;
+                if(this.errors['email'])
+                    return false;
             else
              return (this.form.email == "") ? "" : (this.form.reg.test(this.form.email)) ? true : false;
            }
