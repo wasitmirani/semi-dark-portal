@@ -54,17 +54,17 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                         <b-form @submit="onSubmit"  >
+                         <b-form @submit="onSubmit">
                                 <b-form-group id="input-group-2" label="Your Full Name:" label-for="input-2">
                         <b-form-input
                         id="input-2"
                         v-model="form.name"
                          :state="namevalidation"
-
+                        @keydown="onchangeerror('name')"
                         placeholder="Enter full name"
                         ></b-form-input>
                          <b-form-invalid-feedback :state="namevalidation">
-                                  Your Name  must be 4-45 characters long.
+                                  Your Name  must be 3-50 characters long.
                                   </b-form-invalid-feedback>
                          </b-form-group>
 
@@ -79,7 +79,7 @@
                             v-model="form.email"
                             :state="emailvalidation"
                             type="email"
-                             @keydown="emailerror"
+                             @keydown="onchangeerror('email')"
 
                             placeholder="Enter email"
                             ></b-form-input>
@@ -101,7 +101,7 @@
                         type="password"
                         v-model="form.password"
                          :state="passwordvalidation"
-
+                        @keydown="onchangeerror('password')"
                         placeholder="Enter password"
                         ></b-form-input>
                          <b-form-invalid-feedback :state="passwordvalidation">
@@ -154,18 +154,32 @@ export default {
 
       },
     namevalidation() {
-        if(this.form.name=="")
-            return null
+        if(this.form.name==""){
+            if(this.errors['name'])
+                    return false;
+                else
+                  return null;
+        }
         else
-         return this.form.name.length > 2 && this.form.name.length < 45
+        {
+             if(this.errors['name'])
+                    return false;
+                else
+         return this.form.name.length > 2 && this.form.name.length < 51
+        }
+
       },
     passwordvalidation() {
         if(this.form.password==""){
-
+             if(this.errors['password'])
+                    return false;
+                else
              return null
         }
-
         else
+           if(this.errors['password'])
+                    return false;
+                else
          return this.form.password.length > 7 && this.form.password.length < 45
       }
     },
@@ -191,26 +205,24 @@ export default {
         };
     },
     methods: {
-        emailerror(){
+        onchangeerror(name){
             // console.log(event);
-            this.errors['email']="";
+            this.errors[name]="";
         },
-          onSubmit(evt) {
-              this.isValidation=true;
-              const config = {
-                headers: { Authorization: `Bearer `+this.auth_user.api_token }
-            };
+
+          onSubmit() {
+
+
             let formdata=new FormData();
             formdata.append('name',this.form.name);
             formdata.append("email",this.form.email);
             formdata.append('password',this.form.password);
 
         if(!this.edit_mode){
-            axios.post(this.$hostapi_url+"/admin/user/store",formdata,config).then((res)=>{
+            axios.post(this.$hostapi_url+"/admin/user/store",formdata,this.$config).then((res)=>{
                 alert("success");
             }).catch((er)=>{
             this.errors=er.response.data.errors;
-
             console.log(this.errors);
             });
         }
