@@ -200,7 +200,6 @@ export default {
                 thumbnail:'',
                 role:'',
             },
-            edit_collection: {},
             edit_mode: false,
         };
     },
@@ -211,35 +210,64 @@ export default {
         },
 
           onSubmit() {
-
-
             let formdata=new FormData();
             formdata.append('name',this.form.name);
+            formdata.append('id',this.edit_id);
             formdata.append("email",this.form.email);
             formdata.append('password',this.form.password);
-
-        if(!this.edit_mode){
+            if(!this.edit_mode){
             axios.post(this.$hostapi_url+"/admin/user/store",formdata,this.$config).then((res)=>{
-                alert("success");
+                this.get_users();
+                 $('#UserModal').modal('hide');
+                  this.rest_form();
+                 Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'New User has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                    })
             }).catch((er)=>{
             this.errors=er.response.data.errors;
             console.log(this.errors);
             });
         }
         else{
-
+             axios.post(this.$hostapi_url+"/admin/user/update",formdata,this.$config).then((res)=>{
+                this.get_users();
+                 $('#UserModal').modal('hide');
+                this.rest_form();
+                 Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'User has been updated',
+                    showConfirmButton: false,
+                    timer: 1500
+                    })
+            }).catch((er)=>{
+            this.errors=er.response.data.errors;
+            console.log(this.errors);
+            });
         }
 
        },
         edit_data(event) {
             this.edit_mode = true;
-            this.edit_collection = event;
+            this.form.name=event.name;
+            this.form.email=event.email;
             this.edit_id=event.id;
             $('#UserModal').modal('show')
         },
 
         openModal() {
+            this.edit_mode = false;
+            this.rest_form();
             $('#UserModal').modal('show')
+        },
+        rest_form(){
+            this.form.name="";
+            this.form.email="";
+            this.form.password="";
         },
         get_users(page = 1) {
             this.isloading = true;
@@ -261,7 +289,6 @@ export default {
     watch: {
 
     },
-
     mounted() {
         this.get_users();
        this.auth_user= this.$attrs['authuser'];

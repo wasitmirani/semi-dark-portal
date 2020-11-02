@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Admin\User;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -15,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user=User::paginate(10);
+        $user=User::latest()->paginate(10);
         return response()->json($user);
     }
 
@@ -44,11 +45,13 @@ class UserController extends Controller
             'password' => ['required', 'string', 'min:8'],
         ]);
 
-        User::create([
+        $user=User::create([
             'name'=>$request->name,
             'email'=>$request->email,
-
+            'password' => Hash::make($request->password),
         ]);
+
+        return response()->json($user,200);
 
     }
 
@@ -81,9 +84,27 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+         $request->validate([
+            'name' => ['required', 'string', 'min:3','max:50'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,id,'.$request->id],
+        ]);
+
+        if($request->password!=""){
+              $request->validate([
+                    'password' => ['required', 'string', 'min:8'],
+              ]);
+            User::where('id',$request->id)->update(['password'=>Hash::make($request->password)]);
+        }
+// 'password' => Hash::make($request->password),
+          $user=User::where('id',$request->id)->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
+
+        ]);
+
+        return response()->json($user,200);
     }
 
     /**

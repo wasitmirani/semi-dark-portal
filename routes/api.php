@@ -25,5 +25,6 @@ Route::group(['prefix' => 'admin','middleware' => 'auth:api'], function()
     //All the routes that belongs to the group goes here
     Route::get('/users',[UserController::class,'index']);
     Route::post('/user/store',[UserController::class,'store']);
+    Route::post('/user/update',[UserController::class,'update']);
 });
 // Route::get('/get/all/users',[UserController::class,'index']);
