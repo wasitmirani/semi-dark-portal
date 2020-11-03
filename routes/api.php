@@ -26,5 +26,6 @@ Route::group(['prefix' => 'admin','middleware' => 'auth:api'], function()
     Route::get('/users',[UserController::class,'index']);
     Route::post('/user/store',[UserController::class,'store']);
     Route::post('/user/update',[UserController::class,'update']);
+    Route::get('/user/destroy/{id}',[UserController::class,'destroy']);
 });
 // Route::get('/get/all/users',[UserController::class,'index']);

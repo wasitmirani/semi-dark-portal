@@ -1,190 +1,100 @@
 <template>
-    <div>
-        {{ this.$Progress.start() }}
-        <breadcrumb
-            home_name="Dashboard"
-            home_url="/"
-            back_name="Users List"
-            back_url="/all/users"
-            active_name="Users"
-            active_url="/all/users"
-            :breadcrumbbar="true"
-        ></breadcrumb>
-        <div class="contentbar">
-            <!-- Start row -->
-            <div class="row mt-4">
-                <!-- Start col -->
-                <div class="col-lg-12">
-                    <div class="card m-b-30">
-                        <div class="card-header">
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <h5 class="card-title">
-                                        <div class="col-md-4">
-                                            <div class="searchbar">
-                                                <form>
-                                                    <div class="input-group">
-                                                        <input
-                                                            type="search"
-                                                            class="form-control"
-                                                            placeholder="Search"
-                                                            v-model="query"
-                                                            aria-label="Search"
-                                                            aria-describedby="button-addon2"
-                                                        />
-                                                    </div>
-                                                </form>
-                                            </div>
+<div>
+    {{ this.$Progress.start() }}
+    <breadcrumb home_name="Dashboard" home_url="/" back_name="Users List" back_url="/all/users" active_name="Users" active_url="/all/users" :breadcrumbbar="true"></breadcrumb>
+    <div class="contentbar">
+        <!-- Start row -->
+        <div class="row mt-4">
+            <!-- Start col -->
+            <div class="col-lg-12">
+                <div class="card m-b-30">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <h5 class="card-title">
+                                    <div class="col-md-4">
+                                        <div class="searchbar">
+                                            <form>
+                                                <div class="input-group">
+                                                    <input type="search" class="form-control" placeholder="Search" v-model="query" aria-label="Search" aria-describedby="button-addon2" />
+                                                </div>
+                                            </form>
                                         </div>
-                                    </h5>
-                                </div>
-                                <div class="col-md-2 ">
-                                    <button
-                                        type="button"
-                                        class="btn btn-primary  float-right"
-                                        @click="openModal"
-                                    >
-                                        New User
-                                    </button>
-                                </div>
+                                    </div>
+                                </h5>
+                            </div>
+                            <div class="col-md-2 ">
+                                <button type="button" class="btn btn-primary  float-right" @click="openModal">
+                                    New User
+                                </button>
                             </div>
                         </div>
-                        <b-overlay :show="isloading" rounded="sm">
-                            <UserList
-                                :users="this.users"
-                                :get_users="get_users"
-                                v-on:editdata="edit_data($event)"
-                            ></UserList>
-                        </b-overlay>
                     </div>
+                    <b-overlay :show="isloading" rounded="sm">
+                        <UserList :users="this.users" :get_users="get_users" v-on:editdata="edit_data($event)" v-on:deletedata="delete_data($event)"></UserList>
+                    </b-overlay>
                 </div>
-                <!-- End col -->
             </div>
+            <!-- End col -->
         </div>
+    </div>
 
-        <!-- Modal -->
-        <div
-            class="modal fade"
-            id="UserModal"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-        >
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5
-                            class="modal-title"
-                            id="exampleModalLabel"
-                            v-if="!edit_mode"
-                        >
-                            Register User
-                        </h5>
-                        <h5 class="modal-title" id="exampleModalLabel" v-else>
-                            Update User
-                        </h5>
-                        <button
-                            type="button"
-                            class="close"
-                            style="color:white;"
-                            data-dismiss="modal"
-                            aria-label="Close"
-                        >
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <b-form v-on:submit.prevent="onSubmit">
-                            <b-form-group
-                                id="input-group-2"
-                                label="Your Full Name:"
-                                label-for="input-2"
-                            >
-                                <b-form-input
-                                    id="input-2"
-                                    v-model="form.name"
-                                    :state="namevalidation"
-                                    @keydown="onchangeerror('name')"
-                                    placeholder="Enter full name"
-                                ></b-form-input>
-                                <b-form-invalid-feedback
-                                    :state="namevalidation"
-                                >
-                                    Your Name must be 3-50 characters long.
-                                </b-form-invalid-feedback>
-                            </b-form-group>
+    <!-- Modal -->
+    <div class="modal fade" id="UserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" v-if="!edit_mode">
+                        Register User
+                    </h5>
+                    <h5 class="modal-title" id="exampleModalLabel" v-else>
+                        Update User
+                    </h5>
+                    <button type="button" class="close" style="color:white;" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <b-form v-on:submit.prevent="onSubmit">
+                        <b-form-group id="input-group-2" label="Your Full Name:" label-for="input-2">
+                            <b-form-input id="input-2" v-model="form.name" :state="namevalidation" @keydown="onchangeerror('name')" placeholder="Enter full name"></b-form-input>
+                            <b-form-invalid-feedback :state="namevalidation">
+                                Your Name must be 3-50 characters long.
+                            </b-form-invalid-feedback>
+                        </b-form-group>
 
-                            <b-form-group
-                                id="input-group-1"
-                                label="Email address:"
-                                label-for="input-1"
-                            >
-                                <b-form-input
-                                    id="input-1"
-                                    v-model="form.email"
-                                    :state="emailvalidation"
-                                    type="email"
-                                    @keydown="onchangeerror('email')"
-                                    placeholder="Enter email"
-                                ></b-form-input>
-                                <b-form-invalid-feedback
-                                    :state="emailvalidation"
-                                >
-                                    <span v-if="this.errors['email']">
-                                        {{ this.errors["email"][0] }}
-                                    </span>
-                                    <span v-else>
-                                        Please enter a valid email address
-                                    </span>
-                                </b-form-invalid-feedback>
-                            </b-form-group>
+                        <b-form-group id="input-group-1" label="Email address:" label-for="input-1">
+                            <b-form-input id="input-1" v-model="form.email" :state="emailvalidation" type="email" @keydown="onchangeerror('email')" placeholder="Enter email"></b-form-input>
+                            <b-form-invalid-feedback :state="emailvalidation">
+                                <span v-if="this.errors['email']">
+                                    {{ this.errors["email"][0] }}
+                                </span>
+                                <span v-else>
+                                    Please enter a valid email address
+                                </span>
+                            </b-form-invalid-feedback>
+                        </b-form-group>
 
-                            <b-form-group
-                                id="input-group-2"
-                                label="Password"
-                                label-for="input-2"
-                            >
-                                <b-form-input
-                                    id="input-2"
-                                    type="password"
-                                    v-model="form.password"
-                                    :state="passwordvalidation"
-                                    @keydown="onchangeerror('password')"
-                                    placeholder="Enter password"
-                                ></b-form-input>
-                                <b-form-invalid-feedback
-                                    :state="passwordvalidation"
-                                >
-                                    The password must be at least 8 characters.
-                                </b-form-invalid-feedback>
-                            </b-form-group>
+                        <b-form-group id="input-group-2" label="Password" label-for="input-2">
+                            <b-form-input id="input-2" type="password" v-model="form.password" :state="passwordvalidation" @keydown="onchangeerror('password')" placeholder="Enter password"></b-form-input>
+                            <b-form-invalid-feedback :state="passwordvalidation">
+                                The password must be at least 8 characters.
+                            </b-form-invalid-feedback>
+                        </b-form-group>
 
-                            <hr />
-                            <div class="float-right">
-                                <b-button
-                                    type="submit"
-                                    variant="primary"
-                                    v-if="!edit_mode"
-                                    >Save</b-button
-                                >
-                                <b-button type="submit" variant="success" v-else
-                                    >Update</b-button
-                                >
-                                <b-button
-                                    type="reset"
-                                    variant="danger"
-                                    data-dismiss="modal"
-                                    >Close</b-button
-                                >
-                                <!-- <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button> -->
-                            </div>
-                        </b-form>
-                    </div>
+                        <hr />
+                        <div class="float-right">
+                            <b-button type="submit" variant="primary" v-if="!edit_mode">Save</b-button>
+                            <b-button type="submit" variant="success" v-else>Update</b-button>
+                            <b-button type="reset" variant="danger" data-dismiss="modal">Close</b-button>
+                            <!-- <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button> -->
+                        </div>
+                    </b-form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </template>
 
 <script>
@@ -203,11 +113,11 @@ export default {
             } else {
                 if (this.errors["email"]) return false;
                 else
-                    return this.form.email == ""
-                        ? ""
-                        : this.form.reg.test(this.form.email)
-                        ? true
-                        : false;
+                    return this.form.email == "" ?
+                        "" :
+                        this.form.reg.test(this.form.email) ?
+                        true :
+                        false;
             }
         },
         namevalidation() {
@@ -314,6 +224,35 @@ export default {
                     });
             }
         },
+        delete_data(item) {
+            console.log(event);
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    axios.get(
+                            this.$hostapi_url + "/admin/user/destroy/" + item.id,
+                            this.$config
+                        )
+                        .then((res) => {
+                            this.get_users();
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        });
+
+                }
+            })
+        },
         edit_data(event) {
             this.edit_mode = true;
             this.form.name = event.name;
@@ -343,7 +282,7 @@ export default {
                     this.users = res.data;
                     this.isloading = false;
                     var self = this;
-                    setTimeout(function() {
+                    setTimeout(function () {
                         self.$Progress.finish();
                     }, 1000);
                 })
@@ -358,7 +297,7 @@ export default {
         this.auth_user = this.$attrs["authuser"];
         var self = this;
 
-        setTimeout(function() {
+        setTimeout(function () {
             self.$Progress.finish();
         }, 1000);
         //
