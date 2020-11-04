@@ -23,10 +23,23 @@
                                     </div>
                                 </h5>
                             </div>
-                            <div class="col-md-2 ">
-                                <button type="button" class="btn btn-primary  float-right" @click="openModal">
-                                    New User
-                                </button>
+                            <div class="col-md-2">
+
+                                <div class="btn-group mr-2 float-right">
+                                    <button type="button" class="btn  btn-primary mr-4" @click="openModal">
+                                        New User
+                                    </button>
+                                    <div class="dropdown">
+                                        <button class="btn btn-round btn-primary-rgba" type="button" id="CustomdropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
+                                        <div class="dropdown-menu" aria-labelledby="CustomdropdownMenuButton3">
+                                            <a class="dropdown-item" href="#"><i class="feather icon-home mr-2"></i>Dashboard</a>
+                                            <a class="dropdown-item" href="#"><i class="feather icon-user mr-2"></i>Profile</a>
+                                            <a class="dropdown-item" href="#"><i class="feather icon-dollar-sign mr-2"></i>Billing</a>
+                                            <a class="dropdown-item" href="#"><i class="feather icon-settings mr-2"></i>Setting</a>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -94,6 +107,7 @@
             </div>
         </div>
     </div>
+
 </div>
 </template>
 
