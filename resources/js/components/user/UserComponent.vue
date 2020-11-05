@@ -30,11 +30,16 @@
                                     <button type="button" class="btn   btn-primary mr-4" @click="openModal">
                                         New User
                                     </button>
-                                    <div class="dropdown">
-                                         <b-button v-b-toggle.sidebar-right>  <i class="feather icon-more-vertical-"></i></b-button>
-
-
-                                    </div>
+                                   <div class="dropdown">
+                                                    <button class="btn btn-round btn-outline-primary" type="button" id="CustomdropdownMenuButton6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="mdi mdi-filter-variant"></i></button>
+                                                    <div class="dropdown-menu" aria-labelledby="CustomdropdownMenuButton6">
+                                                <DateFilter label_name="Date By" :date_show="true"></DateFilter>
+                                                        <a class="dropdown-item" href="#"><i class="mdi mdi-settings-outline mr-2 text-primary"></i>Status By</a>
+                                                        <a class="dropdown-item" href="#"><i class="feather icon-dollar-sign mr-2"></i>Billing</a>
+                                                        <a class="dropdown-item" href="#"><i class="feather icon-settings mr-2"></i>Setting</a>
+                                                    </div>
+                                                </div>
                                 </div>
 
                             </div>
@@ -111,10 +116,12 @@
 <script>
 import breadcrumb from "../Breadcrumb/breadcrumb";
 import UserList from "../user/UsersListComponent";
+import DateFilter from '../actions/DateFilterComponent';
 export default {
     components: {
         breadcrumb,
-        UserList
+        UserList,
+        DateFilter,
     },
     computed: {
         emailvalidation() {
