@@ -1,5 +1,6 @@
 <template>
 <div>
+
     {{ this.$Progress.start() }}
     <breadcrumb home_name="Dashboard" home_url="/" back_name="Users List" back_url="/all/users" active_name="Users" active_url="/all/users" :breadcrumbbar="true"></breadcrumb>
     <div class="contentbar">
@@ -10,7 +11,7 @@
                 <div class="card m-b-30">
                     <div class="card-header">
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-8">
                                 <h5 class="card-title">
                                     <div class="col-md-4">
                                         <div class="searchbar">
@@ -23,20 +24,16 @@
                                     </div>
                                 </h5>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-4">
 
                                 <div class="btn-group mr-2 float-right">
-                                    <button type="button" class="btn  btn-primary mr-4" @click="openModal">
+                                    <button type="button" class="btn   btn-primary mr-4" @click="openModal">
                                         New User
                                     </button>
                                     <div class="dropdown">
-                                        <button class="btn btn-round btn-primary-rgba" type="button" id="CustomdropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
-                                        <div class="dropdown-menu" aria-labelledby="CustomdropdownMenuButton3">
-                                            <a class="dropdown-item" href="#"><i class="feather icon-home mr-2"></i>Dashboard</a>
-                                            <a class="dropdown-item" href="#"><i class="feather icon-user mr-2"></i>Profile</a>
-                                            <a class="dropdown-item" href="#"><i class="feather icon-dollar-sign mr-2"></i>Billing</a>
-                                            <a class="dropdown-item" href="#"><i class="feather icon-settings mr-2"></i>Setting</a>
-                                        </div>
+                                         <b-button v-b-toggle.sidebar-right>  <i class="feather icon-more-vertical-"></i></b-button>
+
+
                                     </div>
                                 </div>
 
@@ -107,7 +104,7 @@
             </div>
         </div>
     </div>
-
+    {{ this.$Progress.finish() }}
 </div>
 </template>
 
