@@ -13,7 +13,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <h5 class="card-title">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 col-sm-6 col-xs-10">
                                         <div class="searchbar">
                                             <form>
                                                 <div class="input-group">
@@ -24,9 +24,9 @@
                                     </div>
                                 </h5>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 col-sm-6 col-xs-12">
 
-                                <div class="btn-group mr-2 float-right">
+                                <div class="btn-group mr-2 float-right mt-2">
                                     <button type="button" class="btn   btn-primary mr-4" @click="openModal">
                                         New User
                                     </button>
@@ -263,15 +263,21 @@ export default {
 
         onDateBy(){
                let formdata = new FormData();
-                 formdata.append("startdate", this.filter.startdate);
-                 formdata.append("startend", this.filter.startend);
+                 formdata.append("startdate",moment.utc(this.filter.startdate).format('YYYY-MM-DD'));
+                 formdata.append("enddate",moment.utc(this.filter.enddate).format('YYYY-MM-DD'));
               axios
                     .post(
                         this.$hostapi_url + "/dashboard/user/filter/dateby",
                         formdata,
                         this.$config
                     )
-                    .then(res => {}).catch((er)=>{
+                    .then(res => {
+                        this.users=res.data;
+                        $("#DateModal").modal("hide");
+                        this.filter.dateby=false;
+                        this.filter.startdate="";
+                        this.filter.enddate="";
+                    }).catch((er)=>{
 
                     });
         },

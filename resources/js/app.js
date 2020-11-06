@@ -14,6 +14,7 @@ import moment from 'moment';
 import Swal from 'sweetalert2';
 
 window.Swal = Swal;
+window.moment=moment;
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);

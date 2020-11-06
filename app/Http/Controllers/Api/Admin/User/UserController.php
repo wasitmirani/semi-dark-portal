@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user=User::latest()->paginate(10);
+        $user=User::latest()->paginate(env('PER_PAGE'));
         return response()->json($user);
     }
 
@@ -123,6 +123,12 @@ class UserController extends Controller
     }
 
     public function filter_dateby(Request $request){
+
+        $users =User::where('created_at', '>=',$request->startdate)
+                           ->where('created_at', '<=', $request->enddate)
+                           ->paginate(env('PER_PAGE'));
+
+        return response()->json($users);
 
     }
 }
