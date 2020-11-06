@@ -34,12 +34,12 @@
                                          <button class="btn btn-round btn-outline-primary" type="button" id="CustomdropdownMenuButton6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                               <i class="mdi mdi-filter-variant"></i></button>
                                             <div class="dropdown-menu" aria-labelledby="CustomdropdownMenuButton6">
-                                                        <a class="dropdown-item btn btn-primary mt-1 model-animation-btn" role="button"  @click="openDateModal('dateby')">
-                                                        <i class="mdi mdi-calendar-text mr-2 text-success">
+                                                        <a class="dropdown-item  mt-1 " role="button"  @click="openDateModal('dateby')">
+                                                        <i class="mdi mdi-calendar-text mr-2 text-dark">
                                                         </i>Date By</a>
-                                                        <a class="dropdown-item" href="#"><i class="mdi mdi-settings-outline mr-2 text-primary"></i>Status By</a>
-                                                        <a class="dropdown-item" href="#"><i class="feather icon-dollar-sign mr-2"></i>Billing</a>
-                                                        <a class="dropdown-item" href="#"><i class="feather icon-settings mr-2"></i>Setting</a>
+                                                        <a class="dropdown-item" role="button"><i class="mdi mdi-settings-outline mr-2 text-dark"></i>Status By</a>
+                                                        <!-- <a class="dropdown-item" href="#"><i class="feather icon-dollar-sign mr-2"></i>Billing</a>
+                                                        <a class="dropdown-item" href="#"><i class="feather icon-settings mr-2"></i>Setting</a> -->
                                                     </div>
                                                 </div>
                                 </div>
@@ -126,29 +126,34 @@
 
                   <!-- Start col -->
                   <div class=" row" v-show="filter.dateby">
-                          <b-form >
+                          <b-form v-on:submit.prevent="onDateBy">
                             <div class="row">
                                 <div class="col ml-4">
 
                                     <label for="example-datepicker">Start Date</label>
-                                    <datepicker  placeholder="Pick Start Date" name="uniquename" required="true"></datepicker>
+                                    <datepicker  placeholder="Pick Start Date"  v-model="filter.startdate" format="yyyy-MM-dd" :required="true"></datepicker>
+  <b-form-invalid-feedback :state="StartdateValidate">
+                                Startdate is required
+                            </b-form-invalid-feedback>
                                 </div>
+
                                  <div class="col">
                                     <label for="example-datepicker">End Date</label>
-                                    <datepicker placeholder="Pick End Date" name="uniquename" required="true"> </datepicker>
+                                    <datepicker placeholder="Pick End Date"   v-model="filter.enddate" format="yyyy-MM-dd" :required="true"> </datepicker>
+                                                  <b-form-invalid-feedback :state="EnddateValidate">
+                                EndDate is required
+                            </b-form-invalid-feedback>
                                 </div>
 
                             </div>
-
+                            <hr>
+  <button type="submit" class="btn btn-primary-rgba mt-2 float-right"><i class="mdi mdi-filter mr-2"></i> Filter</button>
                           </b-form>
                     </div>
                     <!-- End col -->
 
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Apply</button>
-      </div>
+
     </div>
   </div>
 </div>
@@ -167,6 +172,16 @@ export default {
         Datepicker,
     },
     computed: {
+        StartdateValidate(){
+            if(this.filter.startdate==""){
+                return false;
+            }
+        },
+        EnddateValidate(){
+            if(this.filter.enddate==""){
+                return false;
+            }
+        },
         emailvalidation() {
             if (this.form.email == "") {
                 if (this.errors["email"]) return false;
@@ -216,6 +231,8 @@ export default {
               dateby:false,
               statusby:false,
               monthby:false,
+              startdate:'',
+              enddate:'',
             },
             edit_id: "",
             query: "",
@@ -244,7 +261,20 @@ export default {
 
         },
 
+        onDateBy(){
+               let formdata = new FormData();
+                 formdata.append("startdate", this.filter.startdate);
+                 formdata.append("startend", this.filter.startend);
+              axios
+                    .post(
+                        this.$hostapi_url + "/dashboard/user/filter/dateby",
+                        formdata,
+                        this.$config
+                    )
+                    .then(res => {}).catch((er)=>{
 
+                    });
+        },
         onSubmit() {
             let formdata = new FormData();
             formdata.append("name", this.form.name);
@@ -254,7 +284,7 @@ export default {
             if (!this.edit_mode) {
                 axios
                     .post(
-                        this.$hostapi_url + "/admin/user/store",
+                        this.$hostapi_url + "/dashboard/user/store",
                         formdata,
                         this.$config
                     )
@@ -277,7 +307,7 @@ export default {
             } else {
                 axios
                     .post(
-                        this.$hostapi_url + "/admin/user/update",
+                        this.$hostapi_url + "/dashboard/user/update",
                         formdata,
                         this.$config
                     )
@@ -313,7 +343,7 @@ export default {
                 if (result.isConfirmed) {
 
                     axios.get(
-                            this.$hostapi_url + "/admin/user/destroy/" + item.id,
+                            this.$hostapi_url + "/dashboard/user/destroy/" + item.id,
                             this.$config
                         )
                         .then((res) => {
@@ -350,7 +380,7 @@ export default {
             this.isloading = true;
             axios
                 .get(
-                    this.$hostapi_url + "/admin/users?page=" + page,
+                    this.$hostapi_url + "/dashboard/users?page=" + page,
                     this.$config
                 )
                 .then(res => {
