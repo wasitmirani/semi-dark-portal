@@ -31,10 +31,12 @@
                                         New User
                                     </button>
                                    <div class="dropdown">
-                                                    <button class="btn btn-round btn-outline-primary" type="button" id="CustomdropdownMenuButton6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="mdi mdi-filter-variant"></i></button>
-                                                    <div class="dropdown-menu" aria-labelledby="CustomdropdownMenuButton6">
-                                                <DateFilter label_name="Date By" :date_show="true"></DateFilter>
+                                         <button class="btn btn-round btn-outline-primary" type="button" id="CustomdropdownMenuButton6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                              <i class="mdi mdi-filter-variant"></i></button>
+                                            <div class="dropdown-menu" aria-labelledby="CustomdropdownMenuButton6">
+                                                        <a class="dropdown-item btn btn-primary mt-1 model-animation-btn" role="button"  @click="openDateModal">
+                                                        <i class="mdi mdi-calendar-text mr-2 text-success">
+                                                        </i>Date By</a>
                                                         <a class="dropdown-item" href="#"><i class="mdi mdi-settings-outline mr-2 text-primary"></i>Status By</a>
                                                         <a class="dropdown-item" href="#"><i class="feather icon-dollar-sign mr-2"></i>Billing</a>
                                                         <a class="dropdown-item" href="#"><i class="feather icon-settings mr-2"></i>Setting</a>
@@ -109,6 +111,27 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
     {{ this.$Progress.finish() }}
 </div>
 </template>
@@ -116,12 +139,10 @@
 <script>
 import breadcrumb from "../Breadcrumb/breadcrumb";
 import UserList from "../user/UsersListComponent";
-import DateFilter from '../actions/DateFilterComponent';
 export default {
     components: {
         breadcrumb,
         UserList,
-        DateFilter,
     },
     computed: {
         emailvalidation() {
@@ -187,6 +208,10 @@ export default {
             // console.log(event);
             this.errors[name] = "";
         },
+        openDateModal(){
+   $("#exampleModalCenter").modal("show");
+        },
+
 
         onSubmit() {
             let formdata = new FormData();
