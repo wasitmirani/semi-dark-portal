@@ -34,10 +34,10 @@
                                          <button class="btn btn-round btn-outline-primary" type="button" id="CustomdropdownMenuButton6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                               <i class="mdi mdi-filter-variant"></i></button>
                                             <div class="dropdown-menu" aria-labelledby="CustomdropdownMenuButton6">
-                                                        <a class="dropdown-item  mt-1 " role="button"  @click="openDateModal('dateby')">
-                                                        <i class="mdi mdi-calendar-text mr-2 text-dark">
+                                                        <a class="dropdown-item  mt-1 " role="button"  @click="openFilterModal('dateby')">
+                                                        <i class="mdi mdi-calendar-text mr-2 text-dark" >
                                                         </i>Date By</a>
-                                                        <a class="dropdown-item" role="button"><i class="mdi mdi-settings-outline mr-2 text-dark"></i>Status By</a>
+                                                        <a class="dropdown-item" role="button" @click="openFilterModal('statusby')"><i class="mdi mdi-settings-outline mr-2 text-dark"></i>Status By</a>
                                                         <!-- <a class="dropdown-item" href="#"><i class="feather icon-dollar-sign mr-2"></i>Billing</a>
                                                         <a class="dropdown-item" href="#"><i class="feather icon-settings mr-2"></i>Setting</a> -->
                                                     </div>
@@ -113,7 +113,7 @@
     </div>
 
     <!-- Modal -->
-<div class="modal fade" id="DateModal" tabindex="-1" role="dialog">
+<div class="modal fade" id="FilterModal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered model-md" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -124,15 +124,14 @@
       </div>
       <div class="modal-body">
 
-                  <!-- Start col -->
-                  <div class=" row" v-show="filter.dateby">
+                  <!-- Start Date col -->
+                    <div class=" row" v-show="filter.dateby">
                           <b-form v-on:submit.prevent="onDateBy">
                             <div class="row">
                                 <div class="col ml-4">
-
                                     <label for="example-datepicker">Start Date</label>
                                     <datepicker  placeholder="Pick Start Date"  v-model="filter.startdate" format="yyyy-MM-dd" :required="true"></datepicker>
-  <b-form-invalid-feedback :state="StartdateValidate">
+                                        <b-form-invalid-feedback :state="StartdateValidate">
                                 Startdate is required
                             </b-form-invalid-feedback>
                                 </div>
@@ -151,6 +150,17 @@
                           </b-form>
                     </div>
                     <!-- End col -->
+
+                  <!-- Start Status col -->
+                      <div class=" row" v-show="filter.statusby">
+                          <b-form v-on:submit.prevent="onStatusBy">
+                            <div class="row">
+                                <div class="col ml-4">
+                                </div>
+                            </div>
+                          </b-form>
+                      </div>
+                       <!-- End col -->
 
       </div>
 
@@ -252,11 +262,18 @@ export default {
             // console.log(event);
             this.errors[name] = "";
         },
-        openDateModal(value){
-            console.log(value);
+        openFilterModal(value){
+
                 if(value=="dateby"){
+                    this.filter.statusby=false;
                         this.filter.dateby=true;
-                       return $("#DateModal").modal("show");
+
+                       return $("#FilterModal").modal("show");
+                }
+                if(value=="statusby"){
+                          this.filter.dateby=false;
+                        this.filter.statusby=true;
+                       return $("#FilterModal").modal("show");
                 }
 
         },
@@ -273,7 +290,7 @@ export default {
                     )
                     .then(res => {
                         this.users=res.data;
-                        $("#DateModal").modal("hide");
+                        $("#FilterModal").modal("hide");
                         this.filter.dateby=false;
                         this.filter.startdate="";
                         this.filter.enddate="";
