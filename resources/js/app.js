@@ -11,12 +11,14 @@ import router from "./router";
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import VueProgressBar from "vue-progressbar";
 import moment from 'moment';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 window.Swal = Swal;
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+
+
 Vue.component("pagination", require("laravel-vue-pagination"));
 Vue.use(VueProgressBar, {
     color: "rgb(6, 214, 93)",

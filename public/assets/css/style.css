@@ -64,7 +64,7 @@
 
 @import url("../../../../../../css.css");
 
-/* 
+/*
 --------------------------------
     : Custom - General css :
 --------------------------------
@@ -81,7 +81,7 @@ body {
     background: #f2f5fa;
     font-size: 15px;
     font-weight: 400;
-    color: #8A98AC;
+
     line-height: 1.5;
 }
 
@@ -252,7 +252,7 @@ code {
 }
 
 
-/* 
+/*
 -------------------------------
     : Custom - Helper css :
 -------------------------------
@@ -998,7 +998,7 @@ code {
 }
 
 
-/* 
+/*
 --------------------------------
     : Custom - Example css :
 --------------------------------
@@ -1008,7 +1008,7 @@ code {
 /* -- Icons -- */
 
 .icon-box-list div {
-    color: #8A98AC;
+
     border-radius: 50px;
     line-height: 38px;
     white-space: nowrap;
@@ -1473,7 +1473,7 @@ code {
 }
 
 
-/* 
+/*
 ----------------------------------
     : Custom - Bootstrap css :
 ----------------------------------
@@ -1574,7 +1574,7 @@ code {
 
 .dropdown-menu .dropdown-item {
     padding: 0.5rem 1rem;
-    color: #8A98AC;
+
 }
 
 .dropdown-menu .dropdown-item.active {
@@ -1823,7 +1823,7 @@ mark {
 }
 
 
-/* 
+/*
 ------------------------------
     : Custom - Icons css :
 ------------------------------
@@ -26896,7 +26896,7 @@ mark {
 }
 
 
-/* 
+/*
 -----------------------------
     : Custom - Menu css :
 -----------------------------
@@ -26971,7 +26971,7 @@ mark {
 
 .vertical-menu li.vertical-header {
     padding: 15px 25px 5px 25px;
-    color: #8A98AC;
+
     text-transform: uppercase;
     font-size: 11px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.25);
@@ -27000,7 +27000,7 @@ mark {
 }
 
 .vertical-menu a {
-    color: #8A98AC;
+
     text-decoration: none;
 }
 
@@ -27139,7 +27139,7 @@ mark {
 
 .vertical-menu-rtl li.vertical-header {
     padding: 10px 15px 10px 25px;
-    color: #8A98AC;
+
     text-transform: uppercase;
     font-size: 11px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.25);
@@ -27168,7 +27168,7 @@ mark {
 }
 
 .vertical-menu-rtl a {
-    color: #8A98AC;
+
     text-decoration: none;
 }
 
@@ -27238,7 +27238,7 @@ mark {
 }
 
 
-/* 
+/*
 -------------------------------
     : Custom - Topbar css :
 -------------------------------
@@ -27512,7 +27512,7 @@ mark {
 }
 
 .breadcrumbbar .breadcrumb .breadcrumb-item a {
-    color: #8A98AC;
+
 }
 
 .breadcrumbbar .breadcrumb .breadcrumb-item.active {
@@ -27580,7 +27580,7 @@ mark {
 }
 
 .notifybar .timing {
-    color: #8A98AC;
+
     font-size: 12px;
     margin-top: 3px;
 }
@@ -27659,7 +27659,7 @@ mark {
 
 .languagebar .dropdown-menu .dropdown-item {
     padding: 10px 15px !important;
-    color: #8A98AC;
+
 }
 
 .languagebar .dropdown-menu .dropdown-item:focus {
@@ -27772,7 +27772,7 @@ mark {
 }
 
 .profilename p {
-    color: #8A98AC;
+
     margin-bottom: 0;
     font-size: 15px;
 }
@@ -27810,7 +27810,7 @@ mark {
 }
 
 
-/* 
+/*
 -------------------------------
     : Custom - Alerts css :
 -------------------------------
@@ -27913,17 +27913,17 @@ mark {
 }
 
 .alert-light {
-    color: #8A98AC;
+
     background-color: rgba(212, 216, 222, 0.1);
     border-color: rgba(212, 216, 222, 0.1);
 }
 
 .alert-light .alert-link {
-    color: #8A98AC;
+
 }
 
 .alert-light hr {
-    border-top-color: #8A98AC;
+    border-top-
 }
 
 .alert-dark {
@@ -27941,7 +27941,7 @@ mark {
 }
 
 
-/* 
+/*
 -------------------------------
     : Custom - Badges css :
 -------------------------------
@@ -28038,7 +28038,7 @@ mark {
 }
 
 .badge-light {
-    color: #8A98AC;
+
     background-color: #d4d8de;
 }
 
@@ -28167,17 +28167,17 @@ mark {
 
 .badge-light-inverse {
     background-color: rgba(212, 216, 222, 0.1);
-    color: #8A98AC;
+
 }
 
 .badge-light-inverse[href]:hover {
     background-color: #c6cbd3;
-    color: #8A98AC;
+
 }
 
 .badge-light-inverse[href]:focus {
     background-color: #c6cbd3;
-    color: #8A98AC;
+
 }
 
 .badge-dark-inverse {
@@ -28196,7 +28196,7 @@ mark {
 }
 
 
-/* 
+/*
 --------------------------------
     : Custom - Buttons css :
 --------------------------------
@@ -29124,7 +29124,7 @@ mark {
 /* -- Light Button -- */
 
 .btn-light {
-    color: #8A98AC;
+
     background-color: #d4d8de;
     border-color: #d4d8de;
     box-shadow: none;
@@ -29153,14 +29153,14 @@ mark {
 }
 
 .btn-light.focus {
-    color: #8A98AC;
+
     background-color: #c6cbd3;
     border-color: #c6cbd3;
     box-shadow: 0 0 0 0.2rem #d7dbe0;
 }
 
 .btn-light:focus {
-    color: #8A98AC;
+
     background-color: #c6cbd3;
     border-color: #c6cbd3;
     box-shadow: 0 0 0 0.2rem #d7dbe0;
@@ -29671,7 +29671,7 @@ mark {
 .btn-light-rgba {
     background-color: rgba(212, 216, 222, 0.1);
     border: none;
-    color: #8A98AC;
+
 }
 
 .btn-light-rgba:hover {
@@ -29707,7 +29707,7 @@ mark {
 }
 
 
-/* 
+/*
 ---------------------------------
     : Custom - Calender css :
 ---------------------------------
@@ -29828,7 +29828,7 @@ mark {
 }
 
 
-/* 
+/*
 ------------------------------
     : Custom - Cards css :
 ------------------------------
@@ -29935,7 +29935,7 @@ mark {
     font-size: 14px;
     line-height: 20px;
     font-weight: 400;
-    color: #8A98AC;
+
     margin-bottom: 15px;
 }
 
@@ -29997,7 +29997,7 @@ mark {
 }
 
 
-/* 
+/*
 -------------------------------
     : Custom - Charts css :
 -------------------------------
@@ -30015,7 +30015,7 @@ mark {
 
 .chart-label li p {
     font-size: 16px;
-    color: #8A98AC;
+
 }
 
 .chart-label li p i {
@@ -30046,7 +30046,7 @@ mark {
 
 .ct-label {
     fill: #8A98AC;
-    color: #8A98AC;
+
     font-size: 14px;
 }
 
@@ -30626,7 +30626,7 @@ canvas {
     padding: 3px 6px;
     background-color: #ffffff;
     border-left: none;
-    color: #8A98AC;
+
 }
 
 .c3-tooltip td>span {
@@ -30662,7 +30662,7 @@ canvas {
 }
 
 .legendLabel {
-    color: #8A98AC;
+
     font-size: 14px;
 }
 
@@ -30676,7 +30676,7 @@ canvas {
 
 .morris-chart tspan {
     font-family: "Muli", sans-serif;
-    color: #8A98AC;
+
     font-size: 14px;
     font-weight: 400;
 }
@@ -30768,7 +30768,7 @@ canvas {
 }
 
 
-/* 
+/*
 -------------------------------
     : Custom - Chat css :
 -------------------------------
@@ -30788,7 +30788,7 @@ canvas {
 
 .chat-list .chat-search input[type=search] {
     background-color: rgba(129, 167, 205, 0.1);
-    color: #8A98AC;
+
     font-size: 16px;
     padding-left: 20px;
     border: none;
@@ -30796,7 +30796,7 @@ canvas {
 }
 
 .chat-list .chat-search ::placeholder {
-    color: #8A98AC;
+
 }
 
 .chat-list .chat-search .input-group-append {
@@ -30805,7 +30805,7 @@ canvas {
 
 .chat-list .chat-search .btn {
     background-color: rgba(129, 167, 205, 0.1);
-    color: #8A98AC;
+
     font-size: 18px;
     border-radius: 0 3px 3px 0;
     padding: 5px 15px 3px 5px;
@@ -30828,7 +30828,7 @@ canvas {
 }
 
 .chat-list .chat-user-list li h5 .timing {
-    color: #8A98AC;
+
     float: right;
     font-size: 12px;
     margin-top: 3px;
@@ -30929,14 +30929,14 @@ canvas {
 
 .chat-detail .chat-bottom .chat-messagebar input[type=text] {
     background-color: transparent;
-    color: #8A98AC;
+
     font-size: 16px;
     border: none;
     border-radius: 0;
 }
 
 .chat-detail .chat-bottom .chat-messagebar ::placeholder {
-    color: #8A98AC;
+
 }
 
 .chat-detail .chat-bottom .chat-messagebar .input-group-append {
@@ -30949,7 +30949,7 @@ canvas {
 }
 
 
-/* 
+/*
 ---------------------------------
     : Custom - Collapse css :
 ---------------------------------
@@ -31095,7 +31095,7 @@ canvas {
 }
 
 
-/* 
+/*
 ----------------------------------
     : Custom - Dashboard css :
 ----------------------------------
@@ -31288,7 +31288,7 @@ canvas {
 }
 
 
-/* 
+/*
 -----------------------------------
     : Custom - eCommerce css :
 -----------------------------------
@@ -31539,7 +31539,7 @@ canvas {
 }
 
 
-/* 
+/*
 -------------------------------
     : Custom - Emails css :
 -------------------------------
@@ -31552,7 +31552,7 @@ canvas {
 }
 
 .email-leftbar ul li a {
-    color: #8A98AC;
+
 }
 
 .email-leftbar ul li a:hover {
@@ -31565,7 +31565,7 @@ canvas {
 
 .email-rightbar .card-header ul li a i {
     padding: 8px 5px;
-    color: #8A98AC;
+
 }
 
 .email-rightbar .card-header ul li a:hover i {
@@ -31573,12 +31573,12 @@ canvas {
 }
 
 .email-rightbar .card-body tr td {
-    color: #8A98AC;
+
     vertical-align: top;
 }
 
 .email-rightbar .card-body tr td a {
-    color: #8A98AC;
+
 }
 
 .email-rightbar .card-body tr:hover {
@@ -31604,7 +31604,7 @@ canvas {
 }
 
 .email-rightbar .email-open-box .open-email-head ul li a i {
-    color: #8A98AC;
+
 }
 
 .email-rightbar .email-open-box .open-email-head ul li a:hover i {
@@ -31616,7 +31616,7 @@ canvas {
 }
 
 .email-rightbar .email-open-box .open-email-head ul li a i {
-    color: #8A98AC;
+
 }
 
 .email-rightbar .email-open-box .open-email-head ul li a:hover i {
@@ -31624,7 +31624,7 @@ canvas {
 }
 
 
-/* 
+/*
 -----------------------------------------
     : Custom - Form Colorpicker css :
 -----------------------------------------
@@ -31688,7 +31688,7 @@ canvas {
 }
 
 
-/* 
+/*
 -----------------------------------------
     : Custom - Form Date Picker css :
 -----------------------------------------
@@ -31697,7 +31697,7 @@ canvas {
 .datepicker {
     font-family: "Muli", sans-serif;
     background: #ffffff;
-    color: #8A98AC;
+
     border: none;
     box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
@@ -31921,7 +31921,7 @@ canvas {
 }
 
 
-/* 
+/*
 -------------------------------------
     : Custom - Form Editors css :
 -------------------------------------
@@ -32042,7 +32042,7 @@ canvas {
 }
 
 
-/* 
+/*
 --------------------------------------
     : Custom - Form Elements css :
 --------------------------------------
@@ -32060,8 +32060,8 @@ input:-internal-autofill-selected {
 .form-control {
     background-color: #ffffff;
     font-size: 15px;
-    color: #8A98AC;
-    border: 1px solid rgba(0, 0, 0, 0.03);
+
+    /* border: 1px solid rgba(0, 0, 0, 0.03); */
     border-radius: 3px;
 }
 
@@ -32090,7 +32090,7 @@ input:-internal-autofill-selected {
 }
 
 .form-control-plaintext {
-    color: #8A98AC;
+
 }
 
 .custom-radio .custom-control-input:checked~.custom-control-label::before {
@@ -32133,13 +32133,13 @@ input:-internal-autofill-selected {
 .input-group-text {
     border: 1px solid #d4d8de;
     background: #dde0e5;
-    color: #8A98AC;
+
 }
 
 .custom-select {
     background-color: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.03);
-    color: #8A98AC;
+
 }
 
 .custom-select:focus {
@@ -32149,7 +32149,7 @@ input:-internal-autofill-selected {
 }
 
 .custom-file-label {
-    color: #8A98AC;
+
     background-color: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.03);
     line-height: 1.9;
@@ -32171,7 +32171,7 @@ input:-internal-autofill-selected {
 
 .custom-file-input.is-invalid~.custom-file-label {
     border-color: #91f2bc;
-    color: #8A98AC;
+
 }
 
 .custom-file-input.is-invalid~.custom-file-label .form-control[readonly] {
@@ -32249,7 +32249,7 @@ input:-internal-autofill-selected {
 
 .was-validated .custom-file-input:invalid~.custom-file-label {
     border-color: #ffd8d8;
-    color: #8A98AC;
+
 }
 
 .was-validated .custom-file-input:invalid:focus~.custom-file-label {
@@ -32479,7 +32479,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 -------------------------------------
     : Custom - Form Selects css :
 -------------------------------------
@@ -32505,7 +32505,7 @@ input[type=range]:focus {
 .select2-container .select2-selection--single .select2-selection__rendered {
     line-height: 38px;
     padding-left: 15px;
-    color: #8A98AC;
+
 }
 
 .select2-container .select2-selection--multiple {
@@ -32551,7 +32551,7 @@ input[type=range]:focus {
 .select2-container--default .select2-selection--single {
     background-color: #ffffff;
     font-size: 16px;
-    color: #8A98AC;
+
     border: 1px solid rgba(0, 0, 0, 0.03);
     border-radius: 3px;
 }
@@ -32596,7 +32596,7 @@ input[type=range]:focus {
 .bootstrap-tagsinput {
     background-color: #ffffff;
     font-size: 12px;
-    color: #8A98AC;
+
     border: 1px solid rgba(0, 0, 0, 0.03);
     border-radius: 5px;
     padding: 0.375rem 0.75rem;
@@ -32649,7 +32649,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 -----------------------------------------
     : Custom - Form File Upload css :
 -----------------------------------------
@@ -32670,7 +32670,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 ----------------------------------------
     : Custom - Form Validation css :
 ----------------------------------------
@@ -32702,7 +32702,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 ------------------------------------
     : Custom - Form Wizard css :
 ------------------------------------
@@ -32753,7 +32753,7 @@ input[type=range]:focus {
     display: block;
     width: auto;
     background-color: transparent;
-    color: #8A98AC;
+
     font-size: 16px;
     font-weight: 600;
     padding: 14px 0;
@@ -32779,7 +32779,7 @@ input[type=range]:focus {
 
 .wizard>.steps .done a .number {
     background: #d4d8de;
-    color: #8A98AC;
+
 }
 
 .wizard>.steps .current-info {
@@ -32789,7 +32789,7 @@ input[type=range]:focus {
 
 .wizard>.steps .number {
     background-color: #d4d8de;
-    color: #8A98AC;
+
     font-size: 20px;
     font-weight: 600;
     width: 45px;
@@ -32957,7 +32957,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 -------------------------------
     : Custom - Gallery css :
 -------------------------------
@@ -33070,7 +33070,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 --------------------------------
     : Custom - Invoice css :
 --------------------------------
@@ -33145,7 +33145,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 ---------------------------------------
     : Custom - jQuery Confirm css :
 ---------------------------------------
@@ -33234,7 +33234,7 @@ input[type=range]:focus {
 }
 
 .jconfirm .jconfirm-box .jconfirm-content {
-    color: #8A98AC;
+
 }
 
 .jconfirm .jconfirm-box.jconfirm-type-red {
@@ -33246,7 +33246,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 -------------------------------
     : Custom - jsTree css :
 -------------------------------
@@ -33288,7 +33288,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 --------------------------------------
     : Custom - Kanban Board css :
 --------------------------------------
@@ -33332,7 +33332,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 -----------------------------
     : Custom - Maps css :
 -----------------------------
@@ -33404,7 +33404,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 ------------------------------
     : Custom - Modal css :
 ------------------------------
@@ -33455,7 +33455,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 ---------------------------------
     : Custom - Nestable css :
 ---------------------------------
@@ -33467,7 +33467,7 @@ input[type=range]:focus {
 }
 
 .dd-list .dd-item>button:before {
-    color: #8A98AC;
+
 }
 
 .dd-list .dd-item .dd-list {
@@ -33479,7 +33479,7 @@ input[type=range]:focus {
     height: auto;
     margin: 10px 0;
     padding: 10px 15px;
-    color: #8A98AC;
+
     text-decoration: none;
     font-weight: 600;
     border: 1px solid rgba(0, 0, 0, 0.03);
@@ -33499,11 +33499,11 @@ input[type=range]:focus {
 /* -- Nestable List 2 -- */
 
 #nestable2 .dd-list .dd-item>button :before {
-    color: #8A98AC;
+
 }
 
 #nestable2 .dd-list .dd-item .dd-handle {
-    color: #8A98AC;
+
     border: 1px solid rgba(0, 0, 0, 0.03);
     background: #ffffff;
 }
@@ -33559,7 +33559,7 @@ input[type=range]:focus {
     width: 100%;
     text-align: center;
     text-indent: 0;
-    color: #8A98AC;
+
     font-size: 20px;
     font-weight: 400;
 }
@@ -33568,7 +33568,7 @@ input[type=range]:focus {
     display: block;
     margin: 10px 10px 10px 0;
     padding: 10px 15px 10px 50px;
-    color: #8A98AC;
+
     text-decoration: none;
     font-weight: 600;
     border: 1px solid rgba(0, 0, 0, 0.03);
@@ -33591,7 +33591,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 -------------------------------------------
     : Custom - Onboarding Screens css :
 -------------------------------------------
@@ -33656,7 +33656,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 -----------------------------------
     : Custom - Pagination css :
 -----------------------------------
@@ -33687,7 +33687,7 @@ input[type=range]:focus {
 }
 
 .page-item.disabled .page-link {
-    color: #8A98AC;
+
     pointer-events: none;
     cursor: auto;
     background-color: transparent;
@@ -33695,7 +33695,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 --------------------------------
     : Custom - Pnotify css :
 --------------------------------
@@ -33762,7 +33762,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 --------------------------------------------
     : Custom - Popovers & Tooltips css :
 --------------------------------------------
@@ -33789,7 +33789,7 @@ input[type=range]:focus {
 
 .popover-body {
     padding: 0.5rem 0.75rem;
-    color: #8A98AC;
+
     background-color: #ffffff;
 }
 
@@ -33845,7 +33845,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 --------------------------------
     : Custom - Pricing css :
 --------------------------------
@@ -33890,7 +33890,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 ------------------------------
     : Custom - Print css :
 ------------------------------
@@ -33915,7 +33915,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 ------------------------------------
     : Custom - Progressbar css :
 ------------------------------------
@@ -33930,7 +33930,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 -------------------------------------
     : Custom - Range Slider css :
 -------------------------------------
@@ -34041,7 +34041,7 @@ input[type=range]:focus {
 }
 
 .irs-min {
-    color: #8A98AC;
+
     font-size: 10px;
     line-height: 1.333;
     text-shadow: none;
@@ -34053,7 +34053,7 @@ input[type=range]:focus {
 }
 
 .irs-max {
-    color: #8A98AC;
+
     font-size: 10px;
     line-height: 1.333;
     text-shadow: none;
@@ -34144,11 +34144,11 @@ input[type=range]:focus {
 }
 
 .irs-grid-text {
-    color: #8A98AC;
+
 }
 
 
-/* 
+/*
 -------------------------------
     : Custom - Rating css :
 -------------------------------
@@ -34787,7 +34787,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 ---------------------------------------
     : Custom - Security Pages css :
 ---------------------------------------
@@ -34948,7 +34948,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 -----------------------------------
     : Custom - Summernote css :
 -----------------------------------
@@ -35017,7 +35017,7 @@ input[type=range]:focus {
 }
 
 .note-editor .note-toolbar .btn-light {
-    color: #8A98AC;
+
     background-color: #d4d8de;
     border-color: transparent;
     box-shadow: none;
@@ -35039,7 +35039,7 @@ input[type=range]:focus {
 
 .note-editor.note-frame .note-editing-area .note-editable {
     background-color: transparent;
-    color: #8A98AC;
+
 }
 
 .note-popover .popover .popover-content {
@@ -35061,7 +35061,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 ------------------------------------
     : Custom - Sweet Alert css :
 ------------------------------------
@@ -35082,7 +35082,7 @@ input[type=range]:focus {
 .swal2-modal .swal2-content {
     font-size: 16px;
     font-weight: 400;
-    color: #8A98AC;
+
 }
 
 .swal2-modal .swal2-spacer {
@@ -35197,7 +35197,7 @@ input[type=range]:focus {
 
 .swal2-modal .swal2-validationerror {
     background-color: #d4d8de;
-    color: #8A98AC;
+
     font-weight: 400;
 }
 
@@ -35206,7 +35206,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 ----------------------------------
     : Custom - Switchery css :
 ----------------------------------
@@ -35248,7 +35248,7 @@ input[type=range]:focus {
 }
 
 
-/* 
+/*
 -------------------------------
     : Custom - Tables css :
 -------------------------------
@@ -35268,7 +35268,7 @@ input[type=range]:focus {
 }
 
 .table td {
-    color: #8A98AC;
+
     vertical-align: middle;
     border-top: 1px solid rgba(0, 0, 0, 0.03);
     padding: 0.6rem;
@@ -35323,7 +35323,7 @@ input[type=range]:focus {
 
 .table-dark td {
     border-color: rgba(255, 255, 255, 0.05);
-    color: #8A98AC;
+
 }
 
 .table-dark th {
@@ -35445,12 +35445,12 @@ input[type=range]:focus {
 
 .table-light>td {
     background-color: rgba(212, 216, 222, 0.1);
-    color: #8A98AC;
+
 }
 
 .table-light>th {
     background-color: rgba(212, 216, 222, 0.1);
-    color: #8A98AC;
+
 }
 
 
@@ -35494,7 +35494,7 @@ div.dt-button-info h2 {
 }
 
 div.dt-button-info div {
-    color: #8A98AC;
+
 }
 
 
@@ -35649,7 +35649,7 @@ table.focus-on tfoot tr.focused td {
 
 .footable-paging .label {
     background-color: #d4d8de;
-    color: #8A98AC;
+
     padding: 2px 10px;
     border-radius: 3px;
 }
@@ -35662,7 +35662,7 @@ table.focus-on tfoot tr.focused td {
 .footable-filtering .open>.dropdown-menu {
     display: block;
     padding: 15px;
-    color: #8A98AC;
+
 }
 
 .footable-filtering .open>.dropdown-menu li a.checkbox input[type=checkbox] {
@@ -35680,7 +35680,7 @@ table.focus-on tfoot tr.focused td {
 }
 
 
-/* 
+/*
 -----------------------------
     : Custom - Tabs css :
 -----------------------------
@@ -35789,7 +35789,7 @@ table.focus-on tfoot tr.focused td {
 }
 
 
-/* 
+/*
 ---------------------------------
     : Custom - Timeline css :
 ---------------------------------
@@ -35800,7 +35800,7 @@ table.focus-on tfoot tr.focused td {
 }
 
 
-/* 
+/*
 --------------------------------
     : Custom - Toolbar css :
 --------------------------------
@@ -36032,7 +36032,7 @@ table.focus-on tfoot tr.focused td {
 }
 
 
-/* 
+/*
 -------------------------------
     : Custom - Tour css :
 -------------------------------
@@ -36067,7 +36067,7 @@ table.focus-on tfoot tr.focused td {
     line-height: 1.6;
     margin-bottom: 1.4em;
     font-family: "Muli", sans-serif !important;
-    color: #8A98AC;
+
 }
 
 .cd-single-step .cd-more-info img {
@@ -36084,11 +36084,11 @@ table.focus-on tfoot tr.focused td {
 }
 
 .cd-single-step .cd-more-info .cd-close:before {
-    background-color: #8A98AC;
+    background-
 }
 
 .cd-single-step .cd-more-info .cd-close:after {
-    background-color: #8A98AC;
+    background-
 }
 
 .cd-single-step .cd-more-info .cd-tour-nav li:first-of-type {
@@ -36139,7 +36139,7 @@ table.focus-on tfoot tr.focused td {
         line-height: 1.6;
         margin-bottom: 1.4em;
         font-family: "Muli", sans-serif !important;
-        color: #8A98AC;
+
     }
     .cd-single-step .cd-more-info span {
         float: left;
@@ -36148,10 +36148,10 @@ table.focus-on tfoot tr.focused td {
         font-family: "Muli", sans-serif !important;
     }
     .cd-single-step .cd-more-info .cd-close:before {
-        background-color: #8A98AC;
+        background-
     }
     .cd-single-step .cd-more-info .cd-close:after {
-        background-color: #8A98AC;
+        background-
     }
     .cd-single-step .cd-more-info .cd-tour-nav li:first-of-type {
         margin-right: 15px;
@@ -36177,7 +36177,7 @@ table.focus-on tfoot tr.focused td {
 }
 
 
-/* 
+/*
 --------------------------------
     : Custom - Widgets css :
 --------------------------------
@@ -36408,7 +36408,7 @@ table.focus-on tfoot tr.focused td {
 }
 
 
-/* 
+/*
 -----------------------------------
     : Custom - Responsive css :
 -----------------------------------

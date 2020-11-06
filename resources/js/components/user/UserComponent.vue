@@ -34,7 +34,7 @@
                                          <button class="btn btn-round btn-outline-primary" type="button" id="CustomdropdownMenuButton6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                               <i class="mdi mdi-filter-variant"></i></button>
                                             <div class="dropdown-menu" aria-labelledby="CustomdropdownMenuButton6">
-                                                        <a class="dropdown-item btn btn-primary mt-1 model-animation-btn" role="button"  @click="openDateModal">
+                                                        <a class="dropdown-item btn btn-primary mt-1 model-animation-btn" role="button"  @click="openDateModal('dateby')">
                                                         <i class="mdi mdi-calendar-text mr-2 text-success">
                                                         </i>Date By</a>
                                                         <a class="dropdown-item" href="#"><i class="mdi mdi-settings-outline mr-2 text-primary"></i>Status By</a>
@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal User Modal -->
     <div class="modal fade" id="UserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -113,21 +113,41 @@
     </div>
 
     <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="DateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered model-md" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Advanced Filter</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+
+                  <!-- Start col -->
+                  <div class=" row" v-show="filter.dateby">
+                          <b-form >
+                            <div class="row">
+                                <div class="col ml-4">
+
+                                    <label for="example-datepicker">Start Date</label>
+                                    <datepicker  placeholder="Pick Start Date" name="uniquename" required="true"></datepicker>
+                                </div>
+                                 <div class="col">
+                                    <label for="example-datepicker">End Date</label>
+                                    <datepicker placeholder="Pick End Date" name="uniquename" required="true"> </datepicker>
+                                </div>
+
+                            </div>
+
+                          </b-form>
+                    </div>
+                    <!-- End col -->
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary">Apply</button>
       </div>
     </div>
   </div>
@@ -139,10 +159,12 @@
 <script>
 import breadcrumb from "../Breadcrumb/breadcrumb";
 import UserList from "../user/UsersListComponent";
+import Datepicker from 'vuejs-datepicker';
 export default {
     components: {
         breadcrumb,
         UserList,
+        Datepicker,
     },
     computed: {
         emailvalidation() {
@@ -190,6 +212,11 @@ export default {
             errors: [],
             isloading: false,
             isValidation: false,
+            filter:{
+              dateby:false,
+              statusby:false,
+              monthby:false,
+            },
             edit_id: "",
             query: "",
             form: {
@@ -208,8 +235,13 @@ export default {
             // console.log(event);
             this.errors[name] = "";
         },
-        openDateModal(){
-   $("#exampleModalCenter").modal("show");
+        openDateModal(value){
+            console.log(value);
+                if(value=="dateby"){
+                        this.filter.dateby=true;
+                       return $("#DateModal").modal("show");
+                }
+
         },
 
 
