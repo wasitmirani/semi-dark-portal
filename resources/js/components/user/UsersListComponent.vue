@@ -18,8 +18,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-if=" users.data.length<1">
-                        <td>Data Not Found</td>
+                    <tr v-if="users.data=='' || users.data==null">
+                        <td colspan="6">
+                            <div class="row justify-content-center">
+                                <h3 class="alert alert-info">Data Not Found</h3>
+                            </div>
+                            </td>
                     </tr>
                     <tr v-for="item in users.data" :key="item.id">
                         <td>{{ item.thumbnail }}</td>

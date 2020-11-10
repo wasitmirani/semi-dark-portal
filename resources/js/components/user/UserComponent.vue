@@ -22,6 +22,7 @@
                                             </form>
                                         </div>
                                     </div>
+
                                 </h5>
                             </div>
                             <div class="col-md-4 col-sm-6 col-xs-12">
@@ -125,20 +126,20 @@
       <div class="modal-body">
 
                   <!-- Start Date col -->
-                    <div class=" row" v-show="filter.dateby">
+                    <div class="row justify-content-center" v-show="filter.dateby">
                           <b-form v-on:submit.prevent="onDateBy">
-                            <div class="row">
-                                <div class="col ml-4">
+                            <div class="row ">
+                                <div class="col-12">
                                     <label for="example-datepicker">Start Date</label>
-                                    <datepicker  placeholder="Pick Start Date"  v-model="filter.startdate" format="yyyy-MM-dd" :required="true"></datepicker>
+                                    <datepicker  placeholder="Pick Start Date"   v-model="filter.startdate" format="yyyy-MM-dd" :required="true"></datepicker>
                                         <b-form-invalid-feedback :state="StartdateValidate">
                                 Startdate is required
                             </b-form-invalid-feedback>
                                 </div>
 
-                                 <div class="col">
+                                 <div class="col-12">
                                     <label for="example-datepicker">End Date</label>
-                                    <datepicker placeholder="Pick End Date"   v-model="filter.enddate" format="yyyy-MM-dd" :required="true"> </datepicker>
+                                    <datepicker placeholder="Pick End Date" style="width:100%"  v-model="filter.enddate" format="yyyy-MM-dd" :required="true"> </datepicker>
                                                   <b-form-invalid-feedback :state="EnddateValidate">
                                 EndDate is required
                             </b-form-invalid-feedback>
@@ -234,9 +235,11 @@ export default {
         return {
             users: {},
             auth_user: {},
+            filter_mode:false,
             errors: [],
             isloading: false,
             isValidation: false,
+            tags:[],
             filter:{
               dateby:false,
               statusby:false,
@@ -279,6 +282,9 @@ export default {
         },
 
         onDateBy(){
+            if(this.filter.startdate!="" && this.filter.enddate!=""){
+
+
                let formdata = new FormData();
                  formdata.append("startdate",moment.utc(this.filter.startdate).format('YYYY-MM-DD'));
                  formdata.append("enddate",moment.utc(this.filter.enddate).format('YYYY-MM-DD'));
@@ -290,6 +296,7 @@ export default {
                     )
                     .then(res => {
                         this.users=res.data;
+                        this.tags.push("DateBy");
                         $("#FilterModal").modal("hide");
                         this.filter.dateby=false;
                         this.filter.startdate="";
@@ -297,6 +304,7 @@ export default {
                     }).catch((er)=>{
 
                     });
+            }
         },
         onSubmit() {
             let formdata = new FormData();
@@ -433,4 +441,15 @@ export default {
 };
 </script>
 
-<style></style>
+<style >
+.vdp-datepicker__calendar {
+    position: absolute;
+    z-index: 100;
+    background: #fff;
+    width: 100% !important;
+    border: 1px solid #ccc;
+}
+input{
+    width: 100%;
+}
+</style>
