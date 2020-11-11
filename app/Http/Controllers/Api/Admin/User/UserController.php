@@ -6,7 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-
+use Spatie\Activitylog\Models\Activity;
+use Auth;
 class UserController extends Controller
 {
     /**
@@ -98,7 +99,8 @@ class UserController extends Controller
             User::where('id',$request->id)->update(['password'=>Hash::make($request->password)]);
         }
 // 'password' => Hash::make($request->password),
-          $user=User::where('id',$request->id)->update([
+          $user=User::where('id',$request->id)->first();
+          $user->update([
             'name'=>$request->name,
             'email'=>$request->email,
 

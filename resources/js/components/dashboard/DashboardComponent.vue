@@ -1,11 +1,11 @@
 <template>
-    <Breadcrumb 
-    :breadcrumbbar="true"  
-    home_name="Dashboard" 
-    home_url="/" 
+    <Breadcrumb
+    :breadcrumbbar="true"
+    home_name="Dashboard"
+    home_url="/"
     active_name="Dashboard"
     active_url="/"
-    
+
     />
 </template>
 
@@ -19,6 +19,6 @@ import Breadcrumb from "../Breadcrumb/breadcrumb";
             console.log('Component mounted.')
                  this.$Progress.finish()
         }
-      
+
     }
 </script>
