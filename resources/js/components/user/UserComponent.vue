@@ -2,7 +2,13 @@
 <div>
 
     {{ this.$Progress.start() }}
-    <breadcrumb home_name="Dashboard" home_url="/" back_name="Users List" back_url="/all/users" active_name="Users" active_url="/all/users" :breadcrumbbar="true"></breadcrumb>
+    <breadcrumb
+    home_name="Dashboard" home_url="/"
+    back_name="Users List"
+    back_url="/all/users"
+    active_name="Users"
+    active_url="/all/users"
+    :breadcrumbbar="true"></breadcrumb>
     <div class="contentbar">
         <!-- Start row -->
         <div class="row mt-4">
@@ -17,7 +23,7 @@
                                         <div class="searchbar">
                                             <form>
                                                 <div class="input-group">
-                                                    <input type="search" class="form-control" placeholder="Search" v-model="query" aria-label="Search" aria-describedby="button-addon2" />
+                                                    <input type="search" class="form-control" placeholder="Search" v-model="query" aria-label="Search" @change="search_query" aria-describedby="button-addon2" />
                                                 </div>
                                             </form>
                                         </div>
@@ -31,16 +37,18 @@
                                     <button type="button" class="btn   btn-primary mr-4" @click="openModal">
                                         New User
                                     </button>
+
                                    <div class="dropdown">
-                                         <button class="btn btn-round btn-outline-primary" type="button" id="CustomdropdownMenuButton6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                     <button class="btn btn-round btn-outline-primary" type="button" id="CustomdropdownMenuButton6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                               <i class="mdi mdi-filter-variant"></i></button>
-                                            <div class="dropdown-menu" aria-labelledby="CustomdropdownMenuButton6">
+                                     <div class="dropdown-menu" aria-labelledby="CustomdropdownMenuButton6">
+                                          <a class="dropdown-item" role="button" @click="get_users"><i class="feather icon-refresh-ccw mr-2"></i>Refresh</a>
                                                         <a class="dropdown-item  mt-1 " role="button"  @click="openFilterModal('dateby')">
                                                         <i class="mdi mdi-calendar-text mr-2 text-dark" >
                                                         </i>Date By</a>
                                                         <a class="dropdown-item" role="button" @click="openFilterModal('statusby')"><i class="mdi mdi-settings-outline mr-2 text-dark"></i>Status By</a>
-                                                        <!-- <a class="dropdown-item" href="#"><i class="feather icon-dollar-sign mr-2"></i>Billing</a>
-                                                        <a class="dropdown-item" href="#"><i class="feather icon-settings mr-2"></i>Setting</a> -->
+
+                                                        <!-- <a class="dropdown-item" href="#"><i class="feather icon-settings mr-2"></i>Setting</a> -->
                                                     </div>
                                                 </div>
                                 </div>
@@ -113,61 +121,61 @@
         </div>
     </div>
 
-    <!-- Modal -->
-<div class="modal fade" id="FilterModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-dialog-centered model-md" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Advanced Filter</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
+    <!-- Modal  Filters-->
+        <div class="modal fade" id="FilterModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered model-md" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Advanced Filter</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
 
-                  <!-- Start Date col -->
-                    <div class="row justify-content-center" v-show="filter.dateby">
-                          <b-form v-on:submit.prevent="onDateBy">
-                            <div class="row ">
-                                <div class="col-12">
-                                    <label for="example-datepicker">Start Date</label>
-                                    <datepicker  placeholder="Pick Start Date"   v-model="filter.startdate" format="yyyy-MM-dd" :required="true"></datepicker>
-                                        <b-form-invalid-feedback :state="StartdateValidate">
-                                Startdate is required
-                            </b-form-invalid-feedback>
-                                </div>
+                        <!-- Start Date col -->
+                            <div class="row justify-content-center" v-show="filter.dateby">
+                                <b-form v-on:submit.prevent="onDateBy">
+                                    <div class="row ">
+                                        <div class="col-12">
+                                            <label for="example-datepicker">Start Date</label>
+                                            <datepicker  placeholder="Pick Start Date"   v-model="filter.startdate" format="yyyy-MM-dd" :required="true"></datepicker>
+                                                <b-form-invalid-feedback :state="StartdateValidate">
+                                        Startdate is required
+                                    </b-form-invalid-feedback>
+                                        </div>
 
-                                 <div class="col-12">
-                                    <label for="example-datepicker">End Date</label>
-                                    <datepicker placeholder="Pick End Date" style="width:100%"  v-model="filter.enddate" format="yyyy-MM-dd" :required="true"> </datepicker>
-                                                  <b-form-invalid-feedback :state="EnddateValidate">
-                                EndDate is required
-                            </b-form-invalid-feedback>
-                                </div>
+                                        <div class="col-12">
+                                            <label for="example-datepicker">End Date</label>
+                                            <datepicker placeholder="Pick End Date" style="width:100%"  v-model="filter.enddate" format="yyyy-MM-dd" :required="true"> </datepicker>
+                                                        <b-form-invalid-feedback :state="EnddateValidate">
+                                        EndDate is required
+                                    </b-form-invalid-feedback>
+                                        </div>
 
+                                    </div>
+                                    <hr>
+        <button type="submit" class="btn btn-primary-rgba mt-2 float-right"><i class="mdi mdi-filter mr-2"></i> Filter</button>
+                                </b-form>
                             </div>
-                            <hr>
-  <button type="submit" class="btn btn-primary-rgba mt-2 float-right"><i class="mdi mdi-filter mr-2"></i> Filter</button>
-                          </b-form>
-                    </div>
-                    <!-- End col -->
+                            <!-- End col -->
 
-                  <!-- Start Status col -->
-                      <div class=" row" v-show="filter.statusby">
-                          <b-form v-on:submit.prevent="onStatusBy">
-                            <div class="row">
-                                <div class="col ml-4">
-                                </div>
+                        <!-- Start Status col -->
+                            <div class=" row" v-show="filter.statusby">
+                                <b-form v-on:submit.prevent="onStatusBy">
+                                    <div class="row">
+                                        <div class="col ml-4">
+                                        </div>
+                                    </div>
+                                </b-form>
                             </div>
-                          </b-form>
-                      </div>
-                       <!-- End col -->
+                            <!-- End col -->
 
-      </div>
+            </div>
 
-    </div>
-  </div>
-</div>
+            </div>
+        </div>
+        </div>
     {{ this.$Progress.finish() }}
 </div>
 </template>
@@ -176,6 +184,7 @@
 import breadcrumb from "../Breadcrumb/breadcrumb";
 import UserList from "../user/UsersListComponent";
 import Datepicker from 'vuejs-datepicker';
+
 export default {
     components: {
         breadcrumb,
@@ -265,6 +274,32 @@ export default {
             // console.log(event);
             this.errors[name] = "";
         },
+
+           //asyncdata
+    search_query: _.debounce(
+      function() {
+        this.isloading = true;
+
+        this.search();
+      },
+      500 // 500 milliseconds
+    ),
+
+    //search data
+    search() {
+      if (this.query.length > 1) {
+        console.log("cool");
+        axios
+          .get(this.$host_url + "/search/?query=" + this.query)
+          .then(response => {
+            this.isloading = false;
+            this.users = response.data;
+          });
+      } else {
+        this.get_Products();
+      }
+    },
+
         openFilterModal(value){
 
                 if(value=="dateby"){
@@ -290,7 +325,7 @@ export default {
                  formdata.append("enddate",moment.utc(this.filter.enddate).format('YYYY-MM-DD'));
               axios
                     .post(
-                        this.$hostapi_url + "/dashboard/user/filter/dateby",
+                        this.$hostapi_url + "/user/filter/dateby",
                         formdata,
                         this.$config
                     )
@@ -315,7 +350,7 @@ export default {
             if (!this.edit_mode) {
                 axios
                     .post(
-                        this.$hostapi_url + "/dashboard/user/store",
+                        this.$hostapi_url + "/user/store",
                         formdata,
                         this.$config
                     )
@@ -338,7 +373,7 @@ export default {
             } else {
                 axios
                     .post(
-                        this.$hostapi_url + "/dashboard/user/update",
+                        this.$hostapi_url + "/user/update",
                         formdata,
                         this.$config
                     )
@@ -374,7 +409,7 @@ export default {
                 if (result.isConfirmed) {
 
                     axios.get(
-                            this.$hostapi_url + "/dashboard/user/destroy/" + item.id,
+                            this.$hostapi_url + "/user/destroy/" + item.id,
                             this.$config
                         )
                         .then((res) => {
@@ -411,7 +446,7 @@ export default {
             this.isloading = true;
             axios
                 .get(
-                    this.$hostapi_url + "/dashboard/users?page=" + page,
+                    this.$hostapi_url + "/users?page=" + page,
                     this.$config
                 )
                 .then(res => {

@@ -28,8 +28,8 @@ class HomeController extends Controller
     }
 
     public function logs(){
-            $logs=Auth::user();
-        dd($logs->user);
+            $logs=\Auth::user()->actions;
+
             return $logs;
     }
 }

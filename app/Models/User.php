@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
+
+
 use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Spatie\Activitylog\Contracts\Activity;
 
 class User extends Authenticatable
 {
@@ -28,7 +29,6 @@ class User extends Authenticatable
 
     protected static $logAttributesToIgnore = ['password'];
 
-    protected static $logOnlyDirty = true;
 
     /**
      * The attributes that should be hidden for arrays.

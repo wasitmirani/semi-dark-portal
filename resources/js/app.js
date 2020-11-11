@@ -5,8 +5,9 @@
  */
 
 require('./bootstrap');
-
+import _ from  'lodash';
 window.Vue = require('vue');
+window._;
 import router from "./router";
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import VueProgressBar from "vue-progressbar";
@@ -36,7 +37,7 @@ Vue.filter("timeformat", function(value) {
 });
 
 Vue.prototype.$base_url = window.location.origin;
-Vue.prototype.$hostapi_url = window.location.origin + "/api";
+Vue.prototype.$hostapi_url = window.location.origin + "/api/dashboard";
 Vue.prototype.$config={headers: { Authorization: `Bearer `+authUser.api_token }};
 
 const app = new Vue({
