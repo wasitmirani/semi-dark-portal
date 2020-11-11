@@ -20,13 +20,7 @@
                             <div class="col-md-8">
                                 <h5 class="card-title">
                                     <div class="col-md-4 col-sm-6 col-xs-10">
-                                        <div class="searchbar">
-                                            <form>
-                                                <div class="input-group">
-                                                    <input type="search" class="form-control" placeholder="Search" v-model="query" aria-label="Search" @change="search_query" aria-describedby="button-addon2" />
-                                                </div>
-                                            </form>
-                                        </div>
+                                            <SearchFilter apiurl="user/search?query="  v-on:isloading="is_loading($event)" v-on:reload="get_users()"  v-on:datalist="search_data($event)" ></SearchFilter>
                                     </div>
 
                                 </h5>
@@ -42,7 +36,7 @@
                                      <button class="btn btn-round btn-outline-primary" type="button" id="CustomdropdownMenuButton6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                               <i class="mdi mdi-filter-variant"></i></button>
                                      <div class="dropdown-menu" aria-labelledby="CustomdropdownMenuButton6">
-                                          <a class="dropdown-item" role="button" @click="get_users"><i class="feather icon-refresh-ccw mr-2"></i>Refresh</a>
+                                          <a class="dropdown-item" role="button" @click="get_users()"><i class="feather icon-refresh-ccw mr-2"></i>Refresh</a>
                                                         <a class="dropdown-item  mt-1 " role="button"  @click="openFilterModal('dateby')">
                                                         <i class="mdi mdi-calendar-text mr-2 text-dark" >
                                                         </i>Date By</a>
@@ -132,34 +126,9 @@
                 </button>
             </div>
             <div class="modal-body">
-
-                        <!-- Start Date col -->
-                            <div class="row justify-content-center" v-show="filter.dateby">
-                                <b-form v-on:submit.prevent="onDateBy">
-                                    <div class="row ">
-                                        <div class="col-12">
-                                            <label for="example-datepicker">Start Date</label>
-                                            <datepicker  placeholder="Pick Start Date"   v-model="filter.startdate" format="yyyy-MM-dd" :required="true"></datepicker>
-                                                <b-form-invalid-feedback :state="StartdateValidate">
-                                        Startdate is required
-                                    </b-form-invalid-feedback>
-                                        </div>
-
-                                        <div class="col-12">
-                                            <label for="example-datepicker">End Date</label>
-                                            <datepicker placeholder="Pick End Date" style="width:100%"  v-model="filter.enddate" format="yyyy-MM-dd" :required="true"> </datepicker>
-                                                        <b-form-invalid-feedback :state="EnddateValidate">
-                                        EndDate is required
-                                    </b-form-invalid-feedback>
-                                        </div>
-
-                                    </div>
-                                    <hr>
-        <button type="submit" class="btn btn-primary-rgba mt-2 float-right"><i class="mdi mdi-filter mr-2"></i> Filter</button>
-                                </b-form>
-                            </div>
-                            <!-- End col -->
-
+                         <div class=" row" v-show="filter.dateby">
+                            <DateFilter :datepickershow="true"  v-on:datalist="datefilter_data($event)" apiurl="user/filter/dateby" buttonname="Filter"></DateFilter>
+                         </div>
                         <!-- Start Status col -->
                             <div class=" row" v-show="filter.statusby">
                                 <b-form v-on:submit.prevent="onStatusBy">
@@ -168,9 +137,8 @@
                                         </div>
                                     </div>
                                 </b-form>
-                            </div>
+                        </div>
                             <!-- End col -->
-
             </div>
 
             </div>
@@ -183,25 +151,18 @@
 <script>
 import breadcrumb from "../Breadcrumb/breadcrumb";
 import UserList from "../user/UsersListComponent";
-import Datepicker from 'vuejs-datepicker';
+import DateFilter from "../actions/DateFilterComponent";
+import SearchFilter from "../actions/SearchFilterComponent"
 
 export default {
     components: {
         breadcrumb,
         UserList,
-        Datepicker,
+        DateFilter,
+        SearchFilter,
     },
     computed: {
-        StartdateValidate(){
-            if(this.filter.startdate==""){
-                return false;
-            }
-        },
-        EnddateValidate(){
-            if(this.filter.enddate==""){
-                return false;
-            }
-        },
+
         emailvalidation() {
             if (this.form.email == "") {
                 if (this.errors["email"]) return false;
@@ -244,20 +205,15 @@ export default {
         return {
             users: {},
             auth_user: {},
-            filter_mode:false,
             errors: [],
             isloading: false,
-            isValidation: false,
-            tags:[],
             filter:{
               dateby:false,
               statusby:false,
               monthby:false,
-              startdate:'',
-              enddate:'',
+
             },
             edit_id: "",
-            query: "",
             form: {
                 name: "",
                 password: "",
@@ -274,32 +230,16 @@ export default {
             // console.log(event);
             this.errors[name] = "";
         },
-
-           //asyncdata
-    search_query: _.debounce(
-      function() {
-        this.isloading = true;
-
-        this.search();
-      },
-      500 // 500 milliseconds
-    ),
-
-    //search data
-    search() {
-      if (this.query.length > 1) {
-        console.log("cool");
-        axios
-          .get(this.$host_url + "/search/?query=" + this.query)
-          .then(response => {
-            this.isloading = false;
-            this.users = response.data;
-          });
-      } else {
-        this.get_Products();
-      }
-    },
-
+        datefilter_data(data){
+            $("#FilterModal").modal("hide");
+             this.users=data;
+        },
+        is_loading(value){
+            this.isloading=value;
+        },
+        search_data(data){
+              this.users=data;
+        },
         openFilterModal(value){
 
                 if(value=="dateby"){
@@ -313,34 +253,9 @@ export default {
                         this.filter.statusby=true;
                        return $("#FilterModal").modal("show");
                 }
-
         },
 
-        onDateBy(){
-            if(this.filter.startdate!="" && this.filter.enddate!=""){
 
-
-               let formdata = new FormData();
-                 formdata.append("startdate",moment.utc(this.filter.startdate).format('YYYY-MM-DD'));
-                 formdata.append("enddate",moment.utc(this.filter.enddate).format('YYYY-MM-DD'));
-              axios
-                    .post(
-                        this.$hostapi_url + "/user/filter/dateby",
-                        formdata,
-                        this.$config
-                    )
-                    .then(res => {
-                        this.users=res.data;
-                        this.tags.push("DateBy");
-                        $("#FilterModal").modal("hide");
-                        this.filter.dateby=false;
-                        this.filter.startdate="";
-                        this.filter.enddate="";
-                    }).catch((er)=>{
-
-                    });
-            }
-        },
         onSubmit() {
             let formdata = new FormData();
             formdata.append("name", this.form.name);
@@ -476,15 +391,4 @@ export default {
 };
 </script>
 
-<style >
-.vdp-datepicker__calendar {
-    position: absolute;
-    z-index: 100;
-    background: #fff;
-    width: 100% !important;
-    border: 1px solid #ccc;
-}
-input{
-    width: 100%;
-}
-</style>
+

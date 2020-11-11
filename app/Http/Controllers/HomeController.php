@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Activitylog\Models\Activity;
 
 class HomeController extends Controller
 {
@@ -28,7 +29,7 @@ class HomeController extends Controller
     }
 
     public function logs(){
-            $logs=\Auth::user()->actions;
+           $logs =Activity::where('causer_id',Auth::user()->id)->get();
 
             return $logs;
     }

@@ -24,11 +24,14 @@ Route::group(['prefix' => 'dashboard','middleware' => 'auth:api'], function()
 {
     //All the routes that belongs to the group goes here
     Route::get('/users',[UserController::class,'index']);
-    Route::post('/user/store',[UserController::class,'store']);
-    Route::post('/user/update',[UserController::class,'update']);
-    Route::get('/user/destroy/{id}',[UserController::class,'destroy']);
+    Route::prefix('user')->group(function () {
+        Route::post('/store',[UserController::class,'store']);
+        Route::post('/update',[UserController::class,'update']);
+        Route::get('/destroy/{id}',[UserController::class,'destroy']);
+        //Filters
+        Route::post('/filter/dateby',[UserController::class,'filter_dateby']);
+        Route::get('/search',[UserController::class,'search']);
+    });
 
-    //Filters
-    Route::post('/user/filter/dateby',[UserController::class,'filter_dateby']);
 });
 // Route::get('/get/all/users',[UserController::class,'index']);

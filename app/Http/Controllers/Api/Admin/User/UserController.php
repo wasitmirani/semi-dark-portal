@@ -133,4 +133,11 @@ class UserController extends Controller
         return response()->json($users);
 
     }
+    public function search(){
+        $query=request('query');
+        $users=User::where('name', 'like', '%' . $query. '%')
+        ->Orwhere('email', 'like', '%' . $query. '%')
+        ->orderBy('name','ASC')->paginate(env('PER_PAGE'));
+        return response()->json($users);
+    }
 }
