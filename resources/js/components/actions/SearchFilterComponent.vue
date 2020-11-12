@@ -33,21 +33,35 @@ export default {
       if (this.query.length > 1) {
 
         axios
-          .get(this.$hostapi_url+"/"+this.apiurl+""+ this.query,this.$config)
+          .get(this.$hostapi_url+"/"+this.apiurl+"&query="+ this.query,this.$config)
           .then(response => {
               this.$emit("isloading",false);
+              console.log("Suce comp");
               this.$emit("datalist", response.data);
+
               this.$emit("query", this.query);
+
           });
       }
       else {
           this.query="";
-              this.$emit("query", this.query);
+          this.$emit("query", this.query);
             this.$emit("reload");
       }
 
     }
  },
+ watch: {
+     query(){
+         if(this.query=="")
+         {
+             this.query="";
+          this.$emit("query", this.query);
+            this.$emit("reload");
+         }
+
+     }
+ }
 }
 </script>
 

@@ -19,7 +19,7 @@ class UserController extends Controller
     {
           $q=request('query');
         $user=User::where('name', 'like', '%' . $q . '%')
-        ->Orwhere('name', 'like', '%' . $q . '%')
+        ->Orwhere('email', 'like', '%' . $q. '%')
         ->latest()->paginate(env('PER_PAGE'));
         return response()->json($user);
     }
