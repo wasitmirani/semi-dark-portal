@@ -21,7 +21,7 @@
                             <div class="col-md-8">
                                 <h5 class="card-title">
                                     <div class="col-md-4 col-sm-6 col-xs-10">
-                                        <SearchFilter apiurl="user/search?query="  v-on:query="isquery($event)"  v-on:isloading="is_loading($event)" v-on:reload="get_users()"  v-on:datalist="search_data($event)" ></SearchFilter>
+                                        <SearchFilter :apiurl="'users?page='+this.page_num+'&query='+this.query"  v-on:query="isquery($event)"  v-on:isloading="is_loading($event)" v-on:reload="get_users()"  v-on:datalist="search_data($event)" ></SearchFilter>
                                     </div>
                                 </h5>
                             </div>
@@ -129,6 +129,7 @@ export default {
             users: {},
             auth_user: {},
             isloading: false,
+            page_num:1,
             query:"",
             filter:{
               dateby:false,
@@ -223,6 +224,7 @@ export default {
         },
         get_users(page = 1) {
             this.isloading = true;
+            this.page_num=page;
             axios
                 .get(
                     this.$hostapi_url + "/users?page=" + page+"&query="+this.query,
