@@ -218,7 +218,17 @@
                                                             <a href="#" class="profile-icon"><img src="assets\images\svg-icon\email.svg" class="img-fluid" alt="email">Email</a>
                                                         </li>
                                                         <li class="media dropdown-item">
-                                                            <a href="#" class="profile-icon"><img src="assets\images\svg-icon\logout.svg" class="img-fluid" alt="logout">Logout</a>
+                                                  <a  class="profile-icon" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                                document.getElementById('logout-form').submit();">
+
+                                                                <img src="assets\images\svg-icon\logout.svg" class="img-fluid" alt="logout">Logout
+                                                </a>
+
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                    @csrf
+                                                </form>
+
                                                         </li>
                                                     </ul>
                                                 </div>

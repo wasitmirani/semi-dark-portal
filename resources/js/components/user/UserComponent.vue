@@ -10,6 +10,7 @@
     active_url="/all/users"
     :breadcrumbbar="true"></breadcrumb>
     <div class="contentbar">
+
         <!-- Start row -->
         <div class="row mt-4">
             <!-- Start col -->
@@ -20,18 +21,15 @@
                             <div class="col-md-8">
                                 <h5 class="card-title">
                                     <div class="col-md-4 col-sm-6 col-xs-10">
-                                            <SearchFilter apiurl="user/search?query="  v-on:isloading="is_loading($event)" v-on:reload="get_users()"  v-on:datalist="search_data($event)" ></SearchFilter>
+                                        <SearchFilter apiurl="user/search?query="  v-on:isloading="is_loading($event)" v-on:reload="get_users()"  v-on:datalist="search_data($event)" ></SearchFilter>
                                     </div>
-
                                 </h5>
                             </div>
                             <div class="col-md-4 col-sm-6 col-xs-12">
-
                                 <div class="btn-group mr-2 float-right mt-2">
                                     <button type="button" class="btn   btn-primary mr-4" @click="openModal">
                                         New User
                                     </button>
-
                                    <div class="dropdown">
                                      <button class="btn btn-round btn-outline-primary" type="button" id="CustomdropdownMenuButton6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                               <i class="mdi mdi-filter-variant"></i></button>
@@ -75,57 +73,22 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <b-form v-on:submit.prevent="onSubmit">
-                        <b-form-group id="input-group-2" label="Your Full Name:" label-for="input-2">
-                            <b-form-input id="input-2" v-model="form.name" :state="namevalidation" @keydown="onchangeerror('name')" placeholder="Enter full name"></b-form-input>
-                            <b-form-invalid-feedback :state="namevalidation">
-                                Your Name must be 3-50 characters long.
-                            </b-form-invalid-feedback>
-                        </b-form-group>
-
-                        <b-form-group id="input-group-1" label="Email address:" label-for="input-1">
-                            <b-form-input id="input-1" v-model="form.email" :state="emailvalidation" type="email" @keydown="onchangeerror('email')" placeholder="Enter email"></b-form-input>
-                            <b-form-invalid-feedback :state="emailvalidation">
-                                <span v-if="this.errors['email']">
-                                    {{ this.errors["email"][0] }}
-                                </span>
-                                <span v-else>
-                                    Please enter a valid email address
-                                </span>
-                            </b-form-invalid-feedback>
-                        </b-form-group>
-
-                        <b-form-group id="input-group-2" label="Password" label-for="input-2">
-                            <b-form-input id="input-2" type="password" v-model="form.password" :state="passwordvalidation" @keydown="onchangeerror('password')" placeholder="Enter password"></b-form-input>
-                            <b-form-invalid-feedback :state="passwordvalidation">
-                                The password must be at least 8 characters.
-                            </b-form-invalid-feedback>
-                        </b-form-group>
-
-                        <hr />
-                        <div class="float-right">
-                            <b-button type="submit" variant="primary" v-if="!edit_mode">Save</b-button>
-                            <b-button type="submit" variant="success" v-else>Update</b-button>
-                            <b-button type="reset" variant="danger" data-dismiss="modal">Close</b-button>
-                            <!-- <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button> -->
-                        </div>
-                    </b-form>
+                    <UserForm :edit_mode="edit_mode" :edit_form="edit_collection" v-on:updated="updated($event)" v-on:stored="stored($event)"></UserForm>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- Modal  Filters-->
         <div class="modal fade" id="FilterModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered model-md" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
+             <div class="modal-dialog modal-dialog-centered model-md" role="document">
+                 <div class="modal-content">
+                <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Advanced Filter</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
+                    </button>
+                 </div>
+                  <div class="modal-body">
                          <div class=" row" v-show="filter.dateby">
                             <DateFilter :datepickershow="true"  v-on:datalist="datefilter_data($event)" apiurl="user/filter/dateby" buttonname="Filter"></DateFilter>
                          </div>
@@ -147,89 +110,36 @@
     {{ this.$Progress.finish() }}
 </div>
 </template>
-
 <script>
 import breadcrumb from "../Breadcrumb/breadcrumb";
 import UserList from "../user/UsersListComponent";
 import DateFilter from "../actions/DateFilterComponent";
 import SearchFilter from "../actions/SearchFilterComponent"
-
+import UserForm from "../user/UserFormComponent"
 export default {
     components: {
         breadcrumb,
         UserList,
         DateFilter,
         SearchFilter,
-    },
-    computed: {
-
-        emailvalidation() {
-            if (this.form.email == "") {
-                if (this.errors["email"]) return false;
-                else return null;
-            } else {
-                if (this.errors["email"]) return false;
-                else
-                    return this.form.email == "" ?
-                        "" :
-                        this.form.reg.test(this.form.email) ?
-                        true :
-                        false;
-            }
-        },
-        namevalidation() {
-            if (this.form.name == "") {
-                if (this.errors["name"]) return false;
-                else return null;
-            } else {
-                if (this.errors["name"]) return false;
-                else
-                    return (
-                        this.form.name.length > 2 && this.form.name.length < 51
-                    );
-            }
-        },
-        passwordvalidation() {
-            if (this.form.password == "") {
-                if (this.errors["password"]) return false;
-                else return null;
-            } else if (this.errors["password"]) return false;
-            else
-                return (
-                    this.form.password.length > 7 &&
-                    this.form.password.length < 45
-                );
-        }
+        UserForm,
     },
     data() {
         return {
             users: {},
             auth_user: {},
-            errors: [],
             isloading: false,
             filter:{
               dateby:false,
               statusby:false,
               monthby:false,
-
             },
-            edit_id: "",
-            form: {
-                name: "",
-                password: "",
-                email: "",
-                reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
-                thumbnail: "",
-                role: ""
-            },
-            edit_mode: false
+            edit_mode: false,
+            edit_collection:{},
         };
     },
     methods: {
-        onchangeerror(name) {
-            // console.log(event);
-            this.errors[name] = "";
-        },
+
         datefilter_data(data){
             $("#FilterModal").modal("hide");
              this.users=data;
@@ -241,11 +151,9 @@ export default {
               this.users=data;
         },
         openFilterModal(value){
-
                 if(value=="dateby"){
                     this.filter.statusby=false;
                         this.filter.dateby=true;
-
                        return $("#FilterModal").modal("show");
                 }
                 if(value=="statusby"){
@@ -255,60 +163,20 @@ export default {
                 }
         },
 
-
-        onSubmit() {
-            let formdata = new FormData();
-            formdata.append("name", this.form.name);
-            formdata.append("id", this.edit_id);
-            formdata.append("email", this.form.email);
-            formdata.append("password", this.form.password);
-            if (!this.edit_mode) {
-                axios
-                    .post(
-                        this.$hostapi_url + "/user/store",
-                        formdata,
-                        this.$config
-                    )
-                    .then(res => {
-                        this.get_users();
-                        $("#UserModal").modal("hide");
-                        this.rest_form();
-                        Swal.fire({
-                            position: "top-center",
-                            icon: "success",
-                            title: "New User has been saved",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    })
-                    .catch(er => {
-                        this.errors = er.response.data.errors;
-                        console.log(this.errors);
-                    });
-            } else {
-                axios
-                    .post(
-                        this.$hostapi_url + "/user/update",
-                        formdata,
-                        this.$config
-                    )
-                    .then(res => {
-                        this.get_users();
-                        $("#UserModal").modal("hide");
-                        this.rest_form();
-                        Swal.fire({
-                            position: "top-center",
-                            icon: "success",
-                            title: "User has been updated",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    })
-                    .catch(er => {
-                        this.errors = er.response.data.errors;
-                        console.log(this.errors);
-                    });
+        stored(item){
+            if(item)
+            {
+                     this.get_users();
+                     $("#UserModal").modal("hide");
             }
+        },
+        updated(item){
+            if(item)
+            {
+                     this.get_users();
+                     $("#UserModal").modal("hide");
+            }
+
         },
         delete_data(item) {
             console.log(event);
@@ -341,21 +209,14 @@ export default {
         },
         edit_data(event) {
             this.edit_mode = true;
-            this.form.name = event.name;
-            this.form.email = event.email;
-            this.edit_id = event.id;
+            this.edit_collection=event;
             $("#UserModal").modal("show");
-        },
 
+        },
         openModal() {
             this.edit_mode = false;
-            this.rest_form();
+            this.edit_collection=null;
             $("#UserModal").modal("show");
-        },
-        rest_form() {
-            this.form.name = "";
-            this.form.email = "";
-            this.form.password = "";
         },
         get_users(page = 1) {
             this.isloading = true;
@@ -383,9 +244,7 @@ export default {
         this.auth_user = this.$attrs["authuser"];
         var self = this;
 
-        setTimeout(function () {
-            self.$Progress.finish();
-        }, 1000);
+
         //
     }
 };
