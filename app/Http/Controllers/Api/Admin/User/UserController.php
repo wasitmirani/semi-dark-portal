@@ -17,7 +17,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user=User::latest()->paginate(env('PER_PAGE'));
+          $q=request('query');
+        $user=User::where('name', 'like', '%' . $q . '%')
+        ->Orwhere('name', 'like', '%' . $q . '%')
+        ->latest()->paginate(env('PER_PAGE'));
         return response()->json($user);
     }
 

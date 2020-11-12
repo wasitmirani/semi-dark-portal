@@ -52,7 +52,7 @@
             </table>
         </div>
         <hr />
-        <pagination :data="users" @pagination-change-page="get_users"></pagination>
+        <pagination :data="users" :limit="4" @pagination-change-page="get_users"></pagination>
     </div>
 </div>
 </template>

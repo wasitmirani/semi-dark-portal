@@ -37,9 +37,12 @@ export default {
           .then(response => {
               this.$emit("isloading",false);
               this.$emit("datalist", response.data);
+              this.$emit("query", this.query);
           });
       }
       else {
+          this.query="";
+              this.$emit("query", this.query);
             this.$emit("reload");
       }
 
