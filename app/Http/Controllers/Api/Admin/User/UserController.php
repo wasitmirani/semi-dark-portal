@@ -20,6 +20,7 @@ class UserController extends Controller
           $q=request('query');
         $user=User::where('name', 'like', '%' . $q . '%')
         ->Orwhere('email', 'like', '%' . $q. '%')
+        ->Orwhere('created_at', 'like', '%' . $q. '%')
         ->latest()->paginate(env('PER_PAGE'));
         return response()->json($user);
     }
@@ -131,16 +132,10 @@ class UserController extends Controller
 
         $users =User::where('created_at', '>=',$request->startdate)
                            ->where('created_at', '<=', $request->enddate)
-                           ->paginate(env('PER_PAGE'));
+                           ->get();
 
-        return response()->json($users);
+        return response()->json(['data'=> $users]);
 
     }
-    public function search(){
-        $query=request('query');
-        $users=User::where('name', 'like', '%' . $query. '%')
-        ->Orwhere('email', 'like', '%' . $query. '%')
-        ->orderBy('name','ASC')->paginate(env('PER_PAGE'));
-        return response()->json($users);
-    }
+
 }

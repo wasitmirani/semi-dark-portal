@@ -65,8 +65,8 @@ methods:{
 
 
                let formdata = new FormData();
-                 formdata.append("startdate",moment.utc(this.startdate).format('YYYY-MM-DD'));
-                 formdata.append("enddate",moment.utc(this.enddate).format('YYYY-MM-DD'));
+                 formdata.append("startdate",moment(this.startdate).format('YYYY-MM-DD'));
+                 formdata.append("enddate",moment(this.enddate).format('YYYY-MM-DD'));
               axios
                     .post(
                         this.$hostapi_url + "/"+this.apiurl,

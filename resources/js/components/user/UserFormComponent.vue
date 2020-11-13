@@ -167,10 +167,12 @@ export default {
 
             if(collection==null)
             {
+
               return  this.rest_form();
             }
             if(collection){
-                 this.form.name=collection.name;
+            this.errors="";
+            this.form.name=collection.name;
             this.form.email=collection.email;
             this.edit_id=collection.id;
             }
