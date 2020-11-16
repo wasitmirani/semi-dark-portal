@@ -93,13 +93,8 @@
                             <DateFilter :datepickershow="true"  v-on:datalist="datefilter_data($event)" apiurl="user/filter/dateby" buttonname="Filter"></DateFilter>
                          </div>
                         <!-- Start Status col -->
-                            <div class=" row" v-show="filter.statusby">
-                                <b-form v-on:submit.prevent="onStatusBy">
-                                    <div class="row">
-                                        <div class="col ml-4">
-                                        </div>
-                                    </div>
-                                </b-form>
+                            <div v-show="filter.statusby">
+                            <StatusBy buttonname="Filter" v-on:datalist="StatusByFilter($event)" apiurl="user/status/by"></StatusBy>
                         </div>
                             <!-- End col -->
             </div>
@@ -115,7 +110,8 @@ import breadcrumb from "../Breadcrumb/breadcrumb";
 import UserList from "../user/UsersListComponent";
 import DateFilter from "../actions/DateFilterComponent";
 import SearchFilter from "../actions/SearchFilterComponent"
-import UserForm from "../user/UserFormComponent"
+import UserForm from "../user/UserFormComponent";
+import StatusBy from "../actions/StatusByFilter";
 export default {
     components: {
         breadcrumb,
@@ -123,6 +119,7 @@ export default {
         DateFilter,
         SearchFilter,
         UserForm,
+        StatusBy,
     },
     data() {
         return {
@@ -148,6 +145,10 @@ export default {
         datefilter_data(data){
             $("#FilterModal").modal("hide");
              this.users=data;
+        },
+        StatusByFilter(data){
+               $("#FilterModal").modal("hide");
+                 this.users=data;
         },
         is_loading(value){
             this.isloading=value;

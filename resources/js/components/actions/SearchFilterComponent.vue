@@ -36,7 +36,7 @@ export default {
           .get(this.$hostapi_url+"/"+this.apiurl+"&query="+ this.query,this.$config)
           .then(response => {
               this.$emit("isloading",false);
-              console.log("Suce comp");
+            
               this.$emit("datalist", response.data);
 
               this.$emit("query", this.query);
@@ -46,7 +46,7 @@ export default {
       else {
           this.query="";
           this.$emit("query", this.query);
-            this.$emit("reload");
+          this.$emit("reload");
       }
 
     }

@@ -1,13 +1,15 @@
 <template>
     <div>
-    <b-form @submit="onSubmit" v-show="statusshow">
+          <div class="col-md-12 justify-content-center">
+    <b-form v-on:submit.prevent="StatusBy" >
       <b-form-group
         id="input-group-1"
         label="Please Select Status"
+
         label-for="input-1"
         description=""
       >
-    <b-form-select v-model="selected" :options="options" class="mb-3">
+    <b-form-select  v-model="selected" :options="options" class="mb-3 form-control">
 
       <template #first>
         <b-form-select-option :value="null" disabled>-- Please select an option --</b-form-select-option>
@@ -16,12 +18,13 @@
     </b-form-group>
      <button type="submit" class="btn btn-primary-rgba mt-2 float-right"><i class="mdi mdi-filter mr-2"></i> {{buttonname}}</button>
     </b-form>
+          </div>
   </div>
 </template>
 
 <script>
 export default {
-    props: ["buttonname","statusshow",'apiurl'],
+    props: ["buttonname",'apiurl'],
     data() {
       return {
         selected: null,
@@ -32,13 +35,13 @@ export default {
       }
     },
     methods:{
-         onDateBy(){
-            if(this.startdate!="" && this.enddate!=""){
+         StatusBy(){
+
 
 
                let formdata = new FormData();
-                 formdata.append("startdate",moment.utc(this.startdate).format('YYYY-MM-DD'));
-                 formdata.append("enddate",moment.utc(this.enddate).format('YYYY-MM-DD'));
+                 formdata.append("status",this.selected);
+
               axios
                     .post(
                         this.$hostapi_url + "/"+this.apiurl,
@@ -52,12 +55,15 @@ export default {
                     }).catch((er)=>{
 
                     });
-            }
+
         },
     },
 }
 </script>
 
 <style>
-
+.custom-select {
+    background-color: #ffffff !important;
+    border: 1px solid #0080ff !important;
+}
 </style>

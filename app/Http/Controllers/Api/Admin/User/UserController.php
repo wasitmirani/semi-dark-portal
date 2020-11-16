@@ -136,6 +136,13 @@ class UserController extends Controller
 
         return response()->json(['data'=> $users]);
 
+
+    }
+    public function filter_statusby(Request $request){
+        $users =User::where('status', $request->status)
+        ->get();
+
+return response()->json(['data'=> $users]);
     }
 
 }
