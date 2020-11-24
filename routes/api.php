@@ -31,6 +31,7 @@ Route::group(['prefix' => 'dashboard','middleware' => 'auth:api'], function()
         //Filters
         Route::post('/filter/dateby',[UserController::class,'filter_dateby']);
         Route::get('/search',[UserController::class,'search']);
+        Route::get('status/by',[UserController::class,'statusBy']);
     });
 
 });
