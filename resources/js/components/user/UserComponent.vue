@@ -172,7 +172,7 @@
         </div>
         <!-- Modal  Filters-->
         <div class="modal fade" id="FilterModal" tabindex="-1" role="dialog">
-<<<<<<< HEAD
+
              <div class="modal-dialog modal-dialog-centered model-md" role="document">
                  <div class="modal-content">
                 <div class="modal-header">
@@ -188,7 +188,7 @@
                         <!-- Start Status col -->
                             <div v-show="filter.statusby">
                             <StatusBy buttonname="Filter" v-on:datalist="StatusByFilter($event)" apiurl="user/status/by"></StatusBy>
-=======
+
             <div
                 class="modal-dialog modal-dialog-centered model-md"
                 role="document"
@@ -215,7 +215,7 @@
                                 apiurl="user/filter/dateby"
                                 buttonname="Filter"
                             ></DateFilter>
->>>>>>> 2fbc31c6a38a2f838d858ef75b11f829aae33ca6
+
                         </div>
                         <!-- Start Status col -->
                         <!-- <div class=" row" v-show="filter.statusby">
@@ -226,18 +226,23 @@
                 </div>
             </div>
         </div>
+                  </div>
+                   </div>
+                   </div>
+        </div>
         {{ this.$Progress.finish() }}
+
+
     </div>
+
 </template>
 <script>
 import breadcrumb from "../Breadcrumb/breadcrumb";
 import UserList from "../user/UsersListComponent";
 import DateFilter from "../actions/DateFilterComponent";
-<<<<<<< HEAD
+
 import SearchFilter from "../actions/SearchFilterComponent"
-=======
-import SearchFilter from "../actions/SearchFilterComponent";
->>>>>>> 2fbc31c6a38a2f838d858ef75b11f829aae33ca6
+
 import UserForm from "../user/UserFormComponent";
 import StatusBy from "../actions/StatusByFilter";
 export default {
@@ -273,17 +278,13 @@ export default {
             $("#FilterModal").modal("hide");
             this.users = data;
         },
-<<<<<<< HEAD
+
         StatusByFilter(data){
                $("#FilterModal").modal("hide");
                  this.users=data;
         },
         is_loading(value){
             this.isloading=value;
-=======
-        is_loading(value) {
-            this.isloading = value;
->>>>>>> 2fbc31c6a38a2f838d858ef75b11f829aae33ca6
         },
         search_data(data) {
             this.users = data;

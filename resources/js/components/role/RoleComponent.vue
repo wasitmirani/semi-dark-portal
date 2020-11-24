@@ -10,7 +10,7 @@
 
             :breadcrumbbar="true"
         ></Breadcrumb>
-     <div class="contentbar">
+            <div class="contentbar">
             <!-- Start row -->
             <div class="row mt-4">
                 <!-- Start col -->
@@ -112,7 +112,7 @@
                 </div>
                 <!-- End col -->
             </div>
-        </div>
+         </div>
 
     <div
             class="modal fade"
@@ -156,6 +156,8 @@
                 </div>
             </div>
         </div>
+   {{ this.$Progress.finish() }}
+
   </div>
 </template>
 

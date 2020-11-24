@@ -29,6 +29,7 @@
         "laravel-vue-pagination": "^2.3.1",
         "moment": "^2.29.1",
         "sweetalert2": "^10.9.0",
+        "vue-multiselect": "^2.1.6",
         "vue-progressbar": "^0.7.5",
         "vue-router": "^3.4.8",
         "vue2-datepicker": "^3.7.0",

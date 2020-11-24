@@ -13,11 +13,16 @@ import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import VueProgressBar from "vue-progressbar";
 import moment from 'moment';
 import Swal from 'sweetalert2';
+import Multiselect from 'vue-multiselect'
+
 
 window.Swal = Swal;
 window.moment=moment;
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
+
+// register globally
+Vue.component('multiselect', Multiselect)
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 
@@ -35,12 +40,7 @@ Vue.filter("timeformat", function(value) {
             .fromNow();
     }
 });
-Vue.filter('highlight', function(word, query){
-  var check = new RegExp(query, "ig");
-  return word.toString().replace(check, function(matchedText,a,b){
-      return ('<strong>' + matchedText + '</strong>');
-  });
-});
+
 Vue.prototype.$base_url = window.location.origin;
 Vue.prototype.$hostapi_url = window.location.origin + "/api/dashboard";
 Vue.prototype.$config={headers: { Authorization: `Bearer `+authUser.api_token }};
