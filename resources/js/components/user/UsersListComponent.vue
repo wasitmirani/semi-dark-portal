@@ -34,7 +34,7 @@
                             <b-badge pill variant="danger">Deactive</b-badge>
                         </td>
                         <th>
-                            <span class="co-name">{{ item.name }}</span>
+                            <span class="co-name">{{   item.name     }}</span>
                         </th>
                         <td>{{ item.email }}</td>
                         <td>{{ item.last_login | timeformat }}</td>
@@ -59,7 +59,7 @@
 
 <script>
 export default {
-    props: ["users", "get_users"],
+    props: ["users", "get_users","query"],
     methods: {
         deletedata: function (item) {
             return this.$emit("deletedata", item);

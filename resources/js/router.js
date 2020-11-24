@@ -6,6 +6,7 @@ Vue.use(VueRouter)
 const routes = [
     { path: '/', component: require('./components/dashboard/DashboardComponent.vue').default },
     { path: '/all/users', component: require('./components/user/UserComponent.vue').default },
+     { path: '/all/roles', component: require('./components/role/RoleComponent.vue').default },
 ]
 
 

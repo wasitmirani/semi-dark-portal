@@ -144,5 +144,8 @@ class UserController extends Controller
 
 return response()->json(['data'=> $users]);
     }
+    public function statusBy(Request $request){
+
+    }
 
 }

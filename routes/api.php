@@ -31,7 +31,11 @@ Route::group(['prefix' => 'dashboard','middleware' => 'auth:api'], function()
         //Filters
         Route::post('/filter/dateby',[UserController::class,'filter_dateby']);
         Route::get('/search',[UserController::class,'search']);
+<<<<<<< HEAD
         Route::post('/status/by',[UserController::class,'filter_statusby']);
+=======
+        Route::get('status/by',[UserController::class,'statusBy']);
+>>>>>>> 2fbc31c6a38a2f838d858ef75b11f829aae33ca6
     });
 
 });

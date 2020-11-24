@@ -11,7 +11,7 @@
 
                                 <li class="breadcrumb-item" v-if="home_name!=null ||home_url !=null "><router-link :to="home_url">{{home_name}}</router-link></li>
                                 <li class="breadcrumb-item" v-if="back_name!=null  ||back_url !=null"><router-link :to="back_url">{{back_name}}</router-link></li>
-                                <li class="breadcrumb-item active" aria-current="page"  v-if="active_url!=null || active_name!=null" ><router-link :to="active_url">{{active_name}}</router-link></li>
+                                <li class="breadcrumb-item active" aria-current="page"  v-if=" active_name!=null" >{{active_name}}</li>
                             </ol>
                         </div>
                     </div>
