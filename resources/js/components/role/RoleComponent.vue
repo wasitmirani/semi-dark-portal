@@ -100,13 +100,13 @@
                             </div>
                         </div>
                         <b-overlay :show="isloading" rounded="sm">
-                            <RoleList
+                            <!-- <RoleList
                                 :roles="this.roles"
                                 :query="query"
                                 :get_roles="get_roles"
-                                v-on:editdata="edit_data($event)"
+                              v-on:editdata="edit_data($event)"
                                 v-on:deletedata="delete_data($event)"
-                            ></RoleList>
+                            ></RoleList> -->
                         </b-overlay>
                     </div>
                 </div>
@@ -146,12 +146,12 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <!-- <RoleForm
+                        <RoleForm
                             :edit_mode="edit_mode"
                             :edit_form="edit_collection"
                             v-on:updated="updated($event)"
                             v-on:stored="stored($event)"
-                        ></RoleForm> -->
+                        ></RoleForm>
                     </div>
                 </div>
             </div>
@@ -166,12 +166,14 @@ import Breadcrumb from "../Breadcrumb/breadcrumb";
 import DateFilter from "../actions/DateFilterComponent";
 import SearchFilter from "../actions/SearchFilterComponent";
 import RoleList from "../role/RoleListComponent";
+import RoleForm from "./RoleFormComponent";
 export default {
         components: {
                 Breadcrumb,
                 SearchFilter,
                 DateFilter,
                 RoleList,
+                RoleForm,
 
         },
         data(){

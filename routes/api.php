@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\Admin\Role\RoleController;
 use App\Http\Controllers\Api\Admin\User\UserController;
 
 /*
@@ -38,5 +39,13 @@ Route::group(['prefix' => 'dashboard','middleware' => 'auth:api'], function()
 
     });
 
+    // Roles
+
+      Route::prefix('role')->group(function () {
+        Route::post('/store',[RoleController::class,'store']);
+        Route::get('/users',[RoleController::class,'users']);
+
+      });
+
 });
-// Route::get('/get/all/users',[UserController::class,'index']);
+
