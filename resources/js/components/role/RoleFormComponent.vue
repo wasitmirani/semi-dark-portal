@@ -10,9 +10,9 @@
 
                         <b-form-group id="input-group-1" label="Users" label-for="input-1">
 
-                                  <multiselect v-model="form.users" tag-placeholder="Add this as new user"
+                                  <multiselect v-model="users"
                                   placeholder="Search" label="name" track-by="id" :options="options"
-                                  :multiple="true" :taggable="true" ><span slot="noResult">Oops! No elements found. Consider changing the search query.</span></multiselect>
+                                  :multiple="true"  :taggable="true" ><span slot="noResult">Oops! No elements found. Consider changing the search query.</span></multiselect>
 
                             <b-form-invalid-feedback >
                                 <span v-if="this.errors['users']">
@@ -31,7 +31,10 @@
 </template>
 
 <script>
-
+  // import the component
+  import Treeselect from '@riophae/vue-treeselect'
+  // import the styles
+  import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 export default {
 
      props: ["edit_mode",'edit_form'],
@@ -54,10 +57,11 @@ export default {
         },
     data(){
         return {
+             users: [],
              options:[],
                 errors:[],
                 form:{
-                    users:{},
+
 
 
                     name:"",
