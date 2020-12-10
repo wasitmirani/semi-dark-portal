@@ -11,7 +11,7 @@
                         <b-form-group id="input-group-1" label="Users" label-for="input-1">
 
                                   <multiselect v-model="users"
-                                  placeholder="Search" label="name" track-by="id" :options="options"
+                                  placeholder="Search Users" label="name" track-by="id" :options="options"
                                   :multiple="true"  :taggable="true" ><span slot="noResult">Oops! No elements found. Consider changing the search query.</span></multiselect>
 
                             <b-form-invalid-feedback >
